@@ -1,0 +1,120 @@
+-------------------------------
+Philosophy of Big-data systems:
+-------------------------------
+
+Distribute & Parallel processing
+
+Main categories of NoSQL databases:
+-----------------------------------
+1. Document databases
+2. Column databases
+3. Key Value databases
+4. Graph databases
+5. XML databases
+
+MongoDB is NoSQL database that stores data in BSON format - Binary JSON object.
+
+Drawbacks of RDBMS:
+-------------------
+1. Need structured data
+2. Doesn't support distribution of computation
+
+Hoarding of data:
+-----------------
+
+Idea behind collection for fast storage of unstructured data. Almost billion of records of data is generated, which cannot be structured and further analysis, during the collection or insert phase. Thus, data is "hoarded" in an unstructured manner.
+
+MongoDB shell:
+-------------
+
+1. To create new DB - use <db_name>
+2. To save doument in collection - db.mycoll.save(doc1)
+
+Here, db. is similar to this. in Java.
+
+3. To find documents - db.mycoll.find()
+
+Returns results identified by 12-byte id where,
+
+1st 4 byte represents the timestamp, next 3 byte represents the machine id, following 2 byte represents the process id & last 3 byte represents a counter.
+
+MapReduce:
+----------
+
+MongoDB helped us tackle the problem of storing exponentially generated data during Web 2.0. By using the "hoarding" techique, we stored all the data that was generated.
+
+However, it gave rise to newer problem - Searches. Google has created an algorithm for this problem.
+
+Assume a problem, to find the number of cars for each color?
+
+So we begin by creating a mapping for this,
+
+Color -> Value
+---------------
+Blue -> 1
+
+After collecting some data about this problem, we have achieved the "Map" part required for MapReduce.
+
+Before moving to the reducer there is something that needs to be done. Usually its done by the mapper framework, its shuffling, grouping and sorting.
+
+To better understand this, assume that there are multiple nodes(machines) collecting and mapping similar set of data. Thus, all this data needs to be shuffled, grouped and stored together.
+
+For eg.,
+
+gray: {1,1,1,1,1,1,1}
+black: {1,1,1}
+while: {1,1,1,1,1,1,1,1,1}
+
+This shuffled, grouped & stored data obtained from the framework will be reduced by the reducer.
+
+In our case, the reduced value would be count (or sum).
+
+The output would look something like this,
+
+{
+	color:
+		black: {
+			count: 3	
+		},
+		white: {
+			count: 9	
+		},
+		gray: {
+			count: 7	
+		}
+
+}
+
+Problem 2:
+
+Find the oldest car( based on Man. year) per brand.
+
+Here,
+Key -> Value
+------------
+model -> year
+
+Hint: The key is dependent on what kind of analysis we wanna do.
+
+So here, the mapping framework would bring the same model of cars with the man. year. The reducer would find the "minimum" year.
+
+This is aggregation.
+
+In SQL:
+
+We would do this via,
+SELECT 
+	<col_name>,<aggregation func> 
+FROM table_name
+GROUP BY <col_name> 
+
+Thus, MapReduce is used when we want to perform analysis on "hoarded" data.
+
+Scalability & Parallel Processing:
+----------------------------------
+
+MapReduce is a highly scalable & allows parallel processing. 
+
+Note: Slowest operation in computing is I/O
+
+
