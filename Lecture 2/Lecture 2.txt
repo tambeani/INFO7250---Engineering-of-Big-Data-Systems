@@ -127,4 +127,25 @@ Cons:
 Costly
 2. Grid computing 
 
+Grid computing emerged as a possible solution for a problem that super computers didn't solve
+
+In grid computing, th foucs is on compute-intensive tasks where data passing between nodes is managed using Message Passing Interface (MPI) or one of its variants.
+
+
+Mongo Tools
+-----------
+
+1. Mongo Import 
+
+For importing csv files
+
+mongoimport --db=nsye_db --collection=stocks --type=csv --headerline --file="file location"
+
+
+Q. Find max stock price open per stock symbol.
+
+Here, the key is stock symbol and value is stock_price_open.
+
+
+
 

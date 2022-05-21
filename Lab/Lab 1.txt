@@ -1,7 +1,9 @@
 Importing csv files
 -------------------
+1. Navigate to bin directory in MongoDB folder
+2. Execute below command:
 
-mongoimport --db=nyse_lab --collection=nyse_A --type=csv --headerline --file= "C:\Users\18573\Documents\NYSE_daily_prices_A.csv"
+mongoimport --db=nyse_lab --collection=nyse_A --type=csv --headerline --file="C:\Users\18573\Documents\NYSE_daily_prices_A.csv"
 
 MapReduce
 ---------
@@ -21,7 +23,7 @@ var reduce = function(stock_symbol,stock_price_open){
 
 Then use these in the mapReduce command,
 
-db.nyse_A.mapReduce(map,reduce,{out: "Stock_avg_collection"})
+db.nyse_A.mapReduce(map,reduce,{out: "Stock_max_collection"})
 
 with Finalizer
 --------------
@@ -64,9 +66,9 @@ db.nyse_A.aggregate([
 					$group: { _id: "$stock_symbol",
 					stock_avg:{$avg: "$stock_price_open"}}	
 				},
-{
-	$sort: {stock_symbol: -1}
-}
+				{
+					$sort: {stock_symbol: -1}
+				}
 				
 			])
 
