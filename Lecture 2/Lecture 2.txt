@@ -117,4 +117,14 @@ MapReduce is a highly scalable & allows parallel processing.
 
 Note: Slowest operation in computing is I/O
 
+To prevent this, large-scale computations, keeping data local to a computation is of enormous importance. Thus, performing large-data analysis across machines is not easy.
+
+Ways to tackle this:
+1. Supercomputers
+An advanced computing machine that can perform complex tasks in a fraction of time.
+
+Cons:
+Costly
+2. Grid computing 
+
 

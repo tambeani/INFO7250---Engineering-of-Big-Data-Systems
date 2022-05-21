@@ -1,0 +1,76 @@
+Importing csv files
+-------------------
+
+mongoimport --db=nyse_lab --collection=nyse_A --type=csv --headerline --file= "C:\Users\18573\Documents\NYSE_daily_prices_A.csv"
+
+MapReduce
+---------
+
+Output of Mapper -> Input of Reducer
+
+For using the mapReduce framework on our dataset, we define the mapper & reducer function in a variable
+
+var map = function(){
+	emit(this.stock_symbol,this.stock_price_open);
+}
+
+var reduce = function(stock_symbol,stock_price_open){
+	var avg = Array.avg(stock_price_open);
+	return avg;
+}
+
+Then use these in the mapReduce command,
+
+db.nyse_A.mapReduce(map,reduce,{out: "Stock_avg_collection"})
+
+with Finalizer
+--------------
+
+var map_final = function(){
+	emit(this.stock_symbol,{sum: this.stock_price_open,count:1});
+}
+
+var reduce_final = function(stock_symbol,price_out){
+	var num = {sum:0,count:0}
+	for(var i=0; i<price_out.length;i++){
+		num.sum += price_out[i].sum;
+		num.count += price_out[i].count;
+
+	}
+	return num;
+}
+
+var finalise = function(stock_symbol,result){
+	result.avg = result.sum/result.count;
+	return result;
+}
+
+Then use below command for finalizing
+
+db.nyse_A.mapReduce(map_final,reduce_final,{out: "Stock_avg_final_collection",finalize:finalise});
+
+
+Group aggregation:
+------------------
+
+To get an aggregation result.
+
+1. Group values
+2. Perform operation on grouped data
+3. Analyze over time
+
+db.nyse_A.aggregate([
+				{
+					$group: { _id: "$stock_symbol",
+					stock_avg:{$avg: "$stock_price_open"}}	
+				},
+{
+	$sort: {stock_symbol: -1}
+}
+				
+			])
+
+
+
+
+
