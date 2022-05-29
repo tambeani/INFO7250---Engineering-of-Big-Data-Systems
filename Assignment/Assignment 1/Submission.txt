@@ -1,0 +1,174 @@
+Part 3
+------
+
+1. Create a database for Contact Management System in MongoDB
+
+use contact_management_system
+
+2. Create 5 records with different attributes and values you choose
+
+var doc1 = {
+		
+		fname: "Aniruddha",
+		lname: "Tambe",
+		phone: ["8573768193","8879441961"],
+		address: {
+			street_name: "146 Boylston Street",
+			unit_num: "#3L",
+			city: "Boston",
+			state: "MA",
+			zip: "02130"
+		},
+		email: "tambe.ani@northeastern.edu"	
+	}
+
+var doc2 = {
+		
+		fname: "Siddhant",
+		lname: "Kohli",
+		phone: "7814989493",
+		address: {
+			street_name: "77 Russel St",
+			unit_num: "Apt 2",
+			city: "Malden",
+			state: "MA",
+			zip: "02148"
+		},
+		email: "kohli.si@northeastern.edu"	
+	}
+
+var doc3 = {
+		
+		fname: "Priyanka",
+		lname: "Tambe",
+		phone: "8578003604",
+		address: {
+			street_name: "",
+			city: "Mumbai",
+			state: "Maharashtra"
+		},
+		email: "priyankatambe910@gmail.com"	
+	}
+
+var doc4 = {
+		
+		fname: "Foram",
+		lname: "Bhatt",
+		phone: "4706840790",
+		address: {
+			street_name: "2 Wigglesworth street",
+			city: "Boston",
+			state: "MA"
+		}
+	}
+
+// Invalid record
+var doc5 = {
+		
+		fname: "liahdiashdpiahdpe2131231",
+		lname: ";'aosjdpajdpajdpakdna",
+		phone: "alkdnaokbnoanpoakmdad",
+		address: {
+			street_name: ";klsdhavojsdnlcnjslknsd",
+			city: ";sdofdjp[adad",
+			state: "fn;akdn;adma"
+		}
+	}
+
+
+// Inserting records
+db.contacts.insertMany([doc1,doc2,doc3,doc4,doc5]);
+
+3. Delete one record
+
+Deleting the invalid record
+db.contacts.deleteOne({fname:{$regex:"[0213456789]"}})
+
+4. Update one record
+
+Let us update an email-id of a record,
+
+db.contacts.updateOne(
+	{email: "tambe.ani@northeastern.edu"},
+	{
+		$set:{
+			email:"tambe.aniruddha3110@gmail.com"
+			}
+	}
+	);
+
+Part 4
+------
+
+1. Create a collection called as games
+
+use content_management_system;
+db.createCollection("games");
+
+2. Create 5 games
+
+var game1 = {
+	name: "Prince of Persia",
+	genre: "Action Adventure",
+	rating: 91
+	}
+
+var game2 = {
+	name: "GTA Vice city",
+	genre: ["Open world","Crime","Action Adventure","Racing"],
+	rating: 96
+	}
+
+var game3 = {
+	name: "Need for Speed: Most Wanted",
+	genre: ["Racing","Role-playing"],
+	rating: 89
+	}
+
+var game4 = {
+	name: "Assasins Creed",
+	genre: ["Open world","Action Adventure","RPG"],
+	rating: 96
+	}
+
+var game5 = {
+	name: "Counter Strike: Global Offensive",
+	genre: ["Action","Competitive Gaming"],
+	rating: 98
+	}
+
+show collections
+db.games.insertMany([game1,game2,game3,game4,game5])
+
+3. Find all games
+db.games.find({});
+
+4. Find one game
+db.games.findOne({})
+
+5. Write a query that returns the 3 highest rated games.
+
+db.games.aggregate([{$sort:{rating:-1}},{$limit:3}])
+
+6. Update two favourite games
+
+db.games.update({name: "Need for Speed: Most Wanted"},{$set:{achievements:["Game Master","Speed Demon"]}});
+
+var toUpdate = db.games.find({name: "Assasins Creed"});
+toUpdate[0]["achievements"] = ["Game Master","Speed Demon"];
+db.games.save(toUpdate[0]);
+
+7. Write a query to find records with both achievements
+
+db.games.find({achievements:{$all: ["Game Master","Speed Demon"]}});
+
+8. Write a query that returns only games that have achievements
+
+db.games.find({achievements: { $exists: true}});
+
+
+
+
+
+
+
