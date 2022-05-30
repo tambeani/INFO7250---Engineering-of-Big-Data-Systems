@@ -2,6 +2,14 @@ Find maximum stock opening price by stock symbol.
 
 Soln.:
 
+Starting from MongoDB 5.0 - map-reduce is deprecated. Instead we should use the aggregation pipeline - which provides better performance & usability than map-reduce.
+
+db.orders.mapReduce(
+		function(){emit(key,value)},
+		function(key,values){ return Array.sum(values)},
+		
+		)
+
 Key		: Value
 -----------------------------
 stock_symbol: stock_price_open
@@ -15,7 +23,6 @@ mongoimport --db=nyse_lab --collection=nyse_A --type=csv --headerline --file="C:
 var map = function(){emit(this.stock_symbol,this.stock_price_open);}
 
 var reduce = function(stock_symbol,stock_price_open){var max = stock_price_open[0];for(var i=0; i<stock_price_open.length;i++){if(max < stock_price_open[i]){max = stock_price_open[i];}}return max;}
-
 
 3. Run the mapReduce framework:
 

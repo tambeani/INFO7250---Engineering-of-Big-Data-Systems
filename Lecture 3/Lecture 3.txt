@@ -1,0 +1,56 @@
+Deep-dive in MapReduce
+----------------------
+
+To implement the reduce functionality in SQL, we perform below query,
+
+SELECT 
+	city, count(username)
+FROM user
+GROUP BY city
+
+For this to be implemented using mapReduce we need to define 2 functions, 
+
+MAP: emit(key,val);
+REDUCE: return (key,reducedValue);
+
+A map function will simply emit the key-value pairs. After which, the reduce function will get the key-value pairs to aggregate the values to a "reducedValue".
+
+Map function:
+-------------
+
+It transforms ach input document into zero or more documents while associating a key with a value. It does this by employing emit - i.e. to produce & discharge.
+
+Access to the documents is taken care of by the framework, i.e. the mapreduce frameworks passes the documents to the map function.
+
+Note: There are 2 types of problems data intensive & compute intensive problems. Grid computing is a solution for compute intensive problems, not for data intensive problems. MapReduce was developed to deal with data intensive tasks.
+
+The current document in map function is referenced by "this" keyword. 
+
+A map function also doesn't have any arguments.
+
+Reduce function
+---------------
+
+The emitted key-value pairs from the map functions are fed to the reduce function. It takes key-value pairs as arguments.
+
+Note: MongoDB doesn't call the reduce function if key has only one value.
+
+Note: MongoDB can invoke reduce more than once. Where the output of previous invocation is appended for processing outut in the next cycle. But an assumption is made that output of reducer is same as input - i.e the reduce function or operation must be associative & commutative.
+
+Properties of mathematical operations:
+1. Commutative -> a + b + c = c + b + a
+2. Associative -> (a+b)+c = a+(b+c)
+
+Since, the number of passes that MongoDB is not known to us, we can use the finalize function.
+
+Finalize function:
+-----------------
+
+In case of average computation, using finalize makes sense. Since, average is not associative, we can use this finalize function.
+
+Thus finalize function is used on operations that do not satisfy the commutative & associative property.
+
+
+
+ 
+
