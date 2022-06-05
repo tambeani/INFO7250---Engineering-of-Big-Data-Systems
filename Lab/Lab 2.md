@@ -3,19 +3,16 @@
 ## 1. Install Mongo Compass
 
 **MongoCompass:**
-It the user-interface for interacting with MongoDB in the backend. Its similar to workbench on MySQL db.
+\nIt the user-interface for interacting with MongoDB in the backend. Its similar to workbench on MySQL db.
 
 **Indexing:**
-Helps us uniquely identify each row in a database. The index can help achive the "unique" property in a collection.
+\nHelps us uniquely identify each row in a database. The index can help achive the "unique" property in a collection.
 
 **Used for:**
 
 1. Create a database
 2. Importing .csv files
- - Change the data types
- - Alternative for mongoimport
 3. Analyze functionality
- - Schema information & data visualization
 
 ## 2. Import movielens 1m dataset
  
