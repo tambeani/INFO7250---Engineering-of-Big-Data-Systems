@@ -26,7 +26,7 @@ c. Change the datatype of rating to number
 
 1. Find the average rating per movie_id:
 
-&emsp;key: movie_id<br\>
+&emsp;key: movie_id<br/>
 &emsp;value: rating
 
 &emsp;Define below aggregator in $group stage in MongoCompass:
