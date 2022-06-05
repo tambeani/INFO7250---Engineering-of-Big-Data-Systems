@@ -23,6 +23,8 @@ Download dataset - https://files.grouplens.org/datasets/movielens/ml-1m.zip<br/>
 a. Change the ratings.dat file into ratings.csv<br/>
 b. Add headers for all columns<br/>
 c. Change the datatype of rating to number<br/>
+d. Add a new database as "movie_lens"<br/>
+e. Add a new collection as "ratings"<br/>
 
 ## 3. Define a pipeline for performing below aggregations:
 
