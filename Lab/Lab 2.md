@@ -26,7 +26,7 @@ c. Change the datatype of rating to number
 
 1. Find the average rating per movie_id:
 
-&emsp;key: movie_id
+&emsp;key: movie_id<br\>
 &emsp;value: rating
 
 &emsp;Define below aggregator in $group stage in MongoCompass:
@@ -55,9 +55,8 @@ c. Change the datatype of rating to number
   rating_avg: {$gte: 4}
 }
 ```
+## 4. Using MongoDB Java API on Eclipse:
 
-
-**Using MongoDB Java API on Eclipse:**
 
 
 
