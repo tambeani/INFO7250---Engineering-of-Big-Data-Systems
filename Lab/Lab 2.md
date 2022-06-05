@@ -3,10 +3,12 @@
 ## 1. Install Mongo Compass
 
 **MongoCompass:**
-\nIt the user-interface for interacting with MongoDB in the backend. Its similar to workbench on MySQL db.
+
+It the user-interface for interacting with MongoDB in the backend. Its similar to workbench on MySQL db.
 
 **Indexing:**
-\nHelps us uniquely identify each row in a database. The index can help achive the "unique" property in a collection.
+
+Helps us uniquely identify each row in a database. The index can help achive the "unique" property in a collection.
 
 **Used for:**
 
@@ -22,7 +24,7 @@ c. Change the datatype of rating to number
 
 ## 3. Define a pipeline for performing below aggregations:
 
-Average rating per movie_id
+1. Find the average rating per movie_id:
 
   key: movie_id
   value: rating
@@ -37,14 +39,17 @@ Average rating per movie_id
   }
   ```
 
-Sorting the rating in descending order, define below stage
+2. Sort the rating in descending order: 
+
+  Define below stage:
 ```
 {
   rating_avg: -1
 }
 ```
 
-Filter only movies with average rating greater than equal to 4
+3. Filter only movies with average rating greater than equal to 4:
+
 ```
 {
   rating_avg: {$gte: 4}
