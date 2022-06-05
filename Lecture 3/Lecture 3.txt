@@ -50,6 +50,19 @@ In case of average computation, using finalize makes sense. Since, average is no
 
 Thus finalize function is used on operations that do not satisfy the commutative & associative property.
 
+Replication
+-----------
+
+Replication provides redundancy and increases data availability.
+
+With multiple copies of data on different database servers, replication protects a database from the loss of a single server.
+
+Replication helps to recover from hardware failure and service interruptions.
+
+Replication in MongoDB
+----------------------
+
+A replica set is a group of mongodb instances that host the same data set.
 
 
  

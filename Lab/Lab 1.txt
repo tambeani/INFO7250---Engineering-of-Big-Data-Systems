@@ -73,6 +73,9 @@ db.nyse_A.aggregate([
 			])
 
 
+Here, the $group & $sort are the stages defined for an aggregation pipeline.
+
+
 
 
 
