@@ -17,10 +17,12 @@ Helps us uniquely identify each row in a database. The index can help achive the
 3. Analyze functionality
 
 ## 2. Import movielens 1m dataset
+
+Download dataset - https://files.grouplens.org/datasets/movielens/ml-1m.zip<br/>
  
-a. Change the ratings.dat file into ratings.csv
-b. Add headers for all columns
-c. Change the datatype of rating to number
+a. Change the ratings.dat file into ratings.csv<br/>
+b. Add headers for all columns<br/>
+c. Change the datatype of rating to number<br/>
 
 ## 3. Define a pipeline for performing below aggregations:
 
