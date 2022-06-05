@@ -26,10 +26,10 @@ c. Change the datatype of rating to number
 
 1. Find the average rating per movie_id:
 
-  key: movie_id
-  value: rating
+&emsp;key: movie_id
+&emsp;value: rating
 
-  Define below aggregator in $group stage in MongoCompass:
+&emsp;Define below aggregator in $group stage in MongoCompass:
   ```
   {
     _id: "$movie_id",
@@ -41,7 +41,7 @@ c. Change the datatype of rating to number
 
 2. Sort the rating in descending order: 
 
-  Define below stage:
+&emsp;Define below stage:
 ```
 {
   rating_avg: -1
