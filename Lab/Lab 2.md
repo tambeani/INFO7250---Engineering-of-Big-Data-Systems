@@ -76,12 +76,13 @@ Modern Driver:<br/>
 This approach eliminates the need for instantiating a new object everytime we need to establish a connection.
 
 **Latest** *maven-dependency*:<br/>
-`<dependency>
+```
+<dependency>
     <groupId>org.mongodb</groupId>
     <artifactId>mongo-java-driver</artifactId>
     <version>3.12.11</version>
 </dependency>
-`
+```
 
 2. Add following dependencies
 
