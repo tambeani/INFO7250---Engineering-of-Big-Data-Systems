@@ -63,26 +63,26 @@ e. Add a new collection as "ratings"<br/>
 
 1. Create a Maven project
 
-Adding the mongodb dependencies to the pom.xml we can connect to MongoDB for performing different operations.
+    Adding the mongodb dependencies to the pom.xml we can connect to MongoDB for performing different operations.
 
-We have 3 types of mongo drivers, legacy, modern & bundled (i.e legacy + modern). The legacy driver differs from the modern drivers in the way of creating the mongo client object. 
+    We have 3 types of mongo drivers, legacy, modern & bundled (i.e legacy + modern). The legacy driver differs from the modern drivers in the way of creating the mongo client object. 
 
-Legacy Driver:<br/>
-`MongoClient mongoClient = new MongoClient();`
+    Legacy Driver:<br/>
+    `MongoClient mongoClient = new MongoClient();`
 
-Modern Driver:<br/>
-`MongoClient mongoClient = MongoClients.create();`
+    Modern Driver:<br/>
+    `MongoClient mongoClient = MongoClients.create();`
 
-This approach eliminates the need for instantiating a new object everytime we need to establish a connection.
+    This approach eliminates the need for instantiating a new object everytime we need to establish a connection.
 
-**Latest** *maven-dependency*:<br/>
-```
-<dependency>
-    <groupId>org.mongodb</groupId>
-    <artifactId>mongo-java-driver</artifactId>
-    <version>3.12.11</version>
-</dependency>
-```
+    **Latest** *maven-dependency*:<br/>
+    ```
+    <dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongo-java-driver</artifactId>
+        <version>3.12.11</version>
+    </dependency>
+    ```
 
 2. Add following dependencies
 
