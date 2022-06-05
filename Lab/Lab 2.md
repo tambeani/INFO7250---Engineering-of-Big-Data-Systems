@@ -31,24 +31,28 @@ Average rating per movie_id
   value: rating
 
   Define below aggregator in $group stage in MongoCompass:
+  ```
   {
     _id: "$movie_id",
     rating_avg: {
       $avg: "$rating"
     }
   }
+  ```
 
 Sorting the rating in descending order, define below stage
-
+```
 {
   rating_avg: -1
 }
+```
 
 Filter only movies with average rating greater than equal to 4
-
+```
 {
   rating_avg: {$gte: 4}
 }
+```
 
 
 **Using MongoDB Java API on Eclipse:**
