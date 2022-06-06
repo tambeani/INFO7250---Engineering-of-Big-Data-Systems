@@ -61,7 +61,7 @@ e. Add a new collection as "ratings"<br/>
 ```
 ## Using MongoDB Java API on Eclipse:
 
-**1. Create a Maven project**
+1. Create a Maven project
 
     Adding the mongodb dependencies to the pom.xml we can connect to MongoDB for performing different operations.
 
@@ -88,7 +88,7 @@ e. Add a new collection as "ratings"<br/>
     </dependency>
     ```
 
-**2. Creating a connection class**
+2. Creating a connection class
 
     We can now begin by establishing a connection with mongodb & start executing operations on it.
 
@@ -102,7 +102,7 @@ e. Add a new collection as "ratings"<br/>
     MongoCollection<Document>  nyse_A = nyse_lab.getCollection("nyse_B");
     ```
 
-**3. Importing csv files**
+3. Importing csv files
 
     For this, we can use the scanner & file api to provide location of the csv file for importing.
 
@@ -113,7 +113,7 @@ e. Add a new collection as "ratings"<br/>
     Scanner scanner = new Scanner(nyse_csv);
     ```
 
-**4. Iterating through the csv to add the documents to a list**
+4. Iterating through the csv to add the documents to a list
 
     ```
     // Adding a new line to list documents
@@ -156,7 +156,7 @@ e. Add a new collection as "ratings"<br/>
 
     ```
 
-**5. Add the documents to the collection**
+5. Add the documents to the collection
 
     ```
     //Insert the list of documents to the collection
@@ -173,7 +173,7 @@ e. Add a new collection as "ratings"<br/>
     MongoCompass:
     ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_mongocompass_insertmany_output.png?raw=true)
 
-**6. Define a pipeline for aggregation:**
+6. Define a pipeline for aggregation:
 
     ```
     // Define a pipeline for aggregation
@@ -208,7 +208,7 @@ e. Add a new collection as "ratings"<br/>
     ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_aggregate_output.png?raw=true)
 
 
-**7. Close the connection**
+7. Close the connection
 
     ```
     // Close the connection
