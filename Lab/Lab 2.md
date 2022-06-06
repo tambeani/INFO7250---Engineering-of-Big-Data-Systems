@@ -68,10 +68,14 @@ e. Add a new collection as "ratings"<br/>
     We have 3 types of mongo drivers, legacy, modern & bundled (i.e legacy + modern). The legacy driver differs from the modern drivers in the way of creating the mongo client object. 
 
     Legacy Driver:<br/>
-    `MongoClient mongoClient = new MongoClient();`
+    ```
+    MongoClient mongoClient = new MongoClient();
+    ```
 
     Modern Driver:<br/>
-    `MongoClient mongoClient = MongoClients.create();`
+    ```
+    MongoClient mongoClient = MongoClients.create();
+    ```
 
     This approach eliminates the need for instantiating a new object everytime we need to establish a connection.
 
