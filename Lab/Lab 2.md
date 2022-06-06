@@ -1,6 +1,6 @@
 # Lab 2
 
-## 1. Install Mongo Compass
+## Install Mongo Compass
 
 **MongoCompass:**
 
@@ -8,7 +8,7 @@ It the user-interface for interacting with MongoDB in the backend. Its similar t
 
 **Indexing:**
 
-Helps us uniquely identify each row in a database. The index can help achive the "unique" property in a collection.
+Helps us uniquely identify each row in a database. The index can help achieve the "unique" property in a collection.
 
 **Used for:**
 
@@ -156,10 +156,15 @@ e. Add a new collection as "ratings"<br/>
     ```
 
     Output:
-    
+
+    Eclipse:
     ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_insertmany_output.png?raw=true)
 
 
+    MongoCompass:
+    ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_mongocompass_insertmany_output.png?raw=true)
+
+6. Define a pipeline for aggregation:
 
 
 

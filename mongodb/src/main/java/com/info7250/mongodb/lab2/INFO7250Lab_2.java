@@ -70,7 +70,7 @@ public class INFO7250Lab_2 {
 		}
 		
 		//Insert the list of documents to the collection
-		nyse_b.insertMany(documents);
+		//nyse_b.insertMany(documents);
 		System.out.print("Inserted rows: "+count);
 		
 	}
