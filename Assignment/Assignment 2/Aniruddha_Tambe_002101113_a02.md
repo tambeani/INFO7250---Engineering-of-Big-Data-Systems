@@ -165,6 +165,8 @@ Using the `aggregate()` function of mongodb for calculation the average stock pr
 		}
 	]);
 
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_aggregate_output.png?raw=true)
+
 ## PART 5.1 - PROGRAMMING ASSIGNMENT
 Import the Movielens dataset into MongoDB. Refer to README about file contents and headings.
 https://grouplens.org/datasets/movielens/1m/ (Links to an external site.) (Links to an external site.)   [you may replace :: in the dateset with comma or tab to import]
