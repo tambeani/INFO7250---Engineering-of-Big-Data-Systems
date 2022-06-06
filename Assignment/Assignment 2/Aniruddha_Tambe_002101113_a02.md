@@ -20,9 +20,7 @@ Note: If you cannot access the chapters, enter your neu email as @northeastern.e
  curl -O http://newton.neu.edu/nyse/NYSE_daily_prices_A.csv
  ```
 
-*Note:* 
-
-Before we begin, we need to make sure that mongodb is installed on Linux subsystem.<br/>Run below lines of code on a WSL:<br/>
+*Note:Before we begin, we need to make sure that mongodb is installed on Linux subsystem.*<br/>Run below lines of code on a WSL:<br/>
 ```
 sudo apt install -y mongodb
 cd ..
