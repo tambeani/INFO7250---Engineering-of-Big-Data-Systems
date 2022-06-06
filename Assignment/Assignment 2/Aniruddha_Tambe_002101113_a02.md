@@ -1,7 +1,11 @@
-## PART 1 - READING ASSIGNMENT https://learning.oreilly.com/library/view/mongodb-in-action/9781617291609/?ar (Links to an external site.) (Links to an external site.)
+## PART 1 - READING ASSIGNMENT 
+
+https://learning.oreilly.com/library/view/mongodb-in-action/9781617291609/?ar (Links to an external site.) (Links to an external site.)
+
   Chapter 4. Document-oriented data
   Chapter 5. Constructing queries
   Chapter 6. Aggregation
+
 Note: If you cannot access the chapters, enter your neu email as @northeastern.edu instead of @husky.neu.edu
 
 ## PART 2 - PROGRAMMING ASSIGNMENT
