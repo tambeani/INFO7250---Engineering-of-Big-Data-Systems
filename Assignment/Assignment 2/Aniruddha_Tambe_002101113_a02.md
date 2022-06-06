@@ -40,7 +40,7 @@ This should start the mongodb daemon-process. Run below code for checking if db 
 sudo lsof -i -P -n|grep LISTEN
 ```
 
-Output:
+Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mongod_process.png?raw=true)
 
 ### Scripting the .sh file
