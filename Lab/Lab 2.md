@@ -84,7 +84,67 @@ e. Add a new collection as "ratings"<br/>
     </dependency>
     ```
 
-2. Add following dependencies
+2. Creating a connection class
+
+    We can now begin by establishing a connection with mongodb & start executing operations on it.
+
+    ```// Establish connection using modern client
+		MongoClient client = MongoClients.create();
+		
+		// Connect to mongodb
+		MongoDatabase nyse_lab = client.getDatabase("lab_2");
+		
+		// Create/get collections
+		MongoCollection<Document>  nyse_A = nyse_lab.getCollection("nyse_B");
+    ```
+
+3. Importing csv files
+
+    For this, we can use the scanner & file api to provide location of the csv file for importing.
+
+    ```
+    // Importing the csv file
+		File nyse_csv = new File("C:\\Users\\18573\\Desktop\\BigData\\INFO7250---Engineering-of-Big-Data-Systems\\dataset","NYSE_daily_prices_A.csv");
+		
+    Scanner scanner = new Scanner(nyse_csv);
+    ```
+
+4. Iterating through the csv to add the documents to a list
+
+    ```
+    // Adding a new line to list documents
+		List<Document> documents = new ArrayList<Document>();
+		
+		// Looping through the rows of the csv file
+		while(scanner.hasNext()) {
+			
+			// Create a new document for each row to be added
+			Document currentRow = new Document(); 
+			
+			// Get each line of the csv file
+			String line = scanner.nextLine();
+			
+			// Split the line based on the token of ","
+			String[] tokens = line.split(",");
+			
+			// Adding attributes & values to the row document
+			currentRow.append("exchange", tokens[0]);
+			currentRow.append("stock_symbol", tokens[1]);
+			currentRow.append("date", tokens[2]);
+			currentRow.append("stock_price_open", tokens[3]);
+			currentRow.append("stock_price_high", tokens[4]);
+			currentRow.append("stock_price_low", tokens[5]);
+			currentRow.append("stock_price_close", tokens[6]);
+			currentRow.append("stock_volume", tokens[7]);
+			currentRow.append("stock_price_adj_close", tokens[8]);
+			
+			// Adding the row to the list of documents
+			documents.add(currentRow);
+			
+		}
+    
+    ```
+
 
 
 
