@@ -150,7 +150,7 @@ Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Bi
 
 Using the `aggregate()` function of mongodb for calculation the average stock price:
 
-	```
+	
 	db.nyse_a02_col.aggregate([
 		{
 			$group: { _id: "$stock_symbol",
@@ -164,7 +164,6 @@ Using the `aggregate()` function of mongodb for calculation the average stock pr
 			$sort: {stock_symbol: -1}
 		}
 	]);
-	```
 
 ## PART 5.1 - PROGRAMMING ASSIGNMENT
 Import the Movielens dataset into MongoDB. Refer to README about file contents and headings.
