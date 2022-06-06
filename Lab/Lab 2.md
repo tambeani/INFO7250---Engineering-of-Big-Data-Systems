@@ -113,42 +113,42 @@ e. Add a new collection as "ratings"<br/>
 
     ```
     // Adding a new line to list documents
-		List<Document> documents = new ArrayList<Document>();
-		
-		// Looping through the rows of the csv file
-		int count = 0;
-		while(scanner.hasNext()) {
-						
-			// Create a new document for each row to be added
-			Document currentRow = new Document(); 
-			
-			// Get each line of the csv file
-			String line = scanner.nextLine();
-			
-			// Split the line based on the token of ","
-			String[] tokens = line.split(",");
-			
-			if(tokens[0].equals("exchange")) {
-				//Skipping the headers line
-				continue;
-			}
-			
-			// Adding attributes & values to the row document
-			currentRow.append("exchange", tokens[0]);
-			currentRow.append("stock_symbol", tokens[1]);
-			currentRow.append("date", tokens[2]);
-			currentRow.append("stock_price_open", Double.parseDouble(tokens[3]));
-			currentRow.append("stock_price_high", Double.parseDouble(tokens[4]));
-			currentRow.append("stock_price_low", Double.parseDouble(tokens[5]));
-			currentRow.append("stock_price_close", Double.parseDouble(tokens[6]));
-			currentRow.append("stock_volume", Double.parseDouble(tokens[7]));
-			currentRow.append("stock_price_adj_close", Double.parseDouble(tokens[8]));
-			
-			// Adding the row to the list of documents
-			documents.add(currentRow);
-			count++;
-			
-		}
+    List<Document> documents = new ArrayList<Document>();
+
+    // Looping through the rows of the csv file
+    int count = 0;
+    while(scanner.hasNext()) {
+            
+      // Create a new document for each row to be added
+      Document currentRow = new Document(); 
+      
+      // Get each line of the csv file
+      String line = scanner.nextLine();
+      
+      // Split the line based on the token of ","
+      String[] tokens = line.split(",");
+      
+      if(tokens[0].equals("exchange")) {
+        //Skipping the headers line
+        continue;
+      }
+      
+      // Adding attributes & values to the row document
+      currentRow.append("exchange", tokens[0]);
+      currentRow.append("stock_symbol", tokens[1]);
+      currentRow.append("date", tokens[2]);
+      currentRow.append("stock_price_open", Double.parseDouble(tokens[3]));
+      currentRow.append("stock_price_high", Double.parseDouble(tokens[4]));
+      currentRow.append("stock_price_low", Double.parseDouble(tokens[5]));
+      currentRow.append("stock_price_close", Double.parseDouble(tokens[6]));
+      currentRow.append("stock_volume", Double.parseDouble(tokens[7]));
+      currentRow.append("stock_price_adj_close", Double.parseDouble(tokens[8]));
+      
+      // Adding the row to the list of documents
+      documents.add(currentRow);
+      count++;
+      
+    }
 
     ```
 
