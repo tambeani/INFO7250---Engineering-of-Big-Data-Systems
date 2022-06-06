@@ -9,18 +9,23 @@ https://learning.oreilly.com/library/view/mongodb-in-action/9781617291609/?ar (L
 Note: If you cannot access the chapters, enter your neu email as @northeastern.edu instead of @husky.neu.edu
 
 ## PART 2 - PROGRAMMING ASSIGNMENT
- Write a .bat/.sh to import the entire NYSE dataset (stocks A to Z) into MongoDB.
+ 
+ **Q.** Write a .bat/.sh to import the entire NYSE dataset (stocks A to Z) into MongoDB. 
+ 
  NYSE Dataset Link: http://newton.neu.edu/nyse/NYSE_daily_prices_A.csv
 
  ### Downloading the dataset
 
- Write below lines of code:<br/>
  ```
  sudo apt install -y curl
  curl -O http://newton.neu.edu/nyse/NYSE_daily_prices_A.csv
  ```
 
+ Output:
+ ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_curl_output.png?raw=true)
+
 **Note:**  Before we begin, we need to make sure that mongodb is installed on Linux subsystem.Run below lines of code on a WSL:<br/>
+
 ```
 sudo apt install -y mongodb
 cd ..
@@ -29,11 +34,14 @@ sudo chmod 777 /usr/bin/data/db
 /usr/bin/mongod --db-path=/usr/bin/data/db
 ```
 
-This should start the mongodb daemon-process.Run below code for checking if db is running:<br/>
+This should start the mongodb daemon-process. Run below code for checking if db is running:<br/>
 
 ```
 sudo lsof -i -P -n|grep LISTEN
 ```
+
+Output:
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mongod_process.png?raw=true)
 
 ### Scripting the .sh file
 ```
@@ -47,6 +55,16 @@ do
   $MONGODB_HOME/mongoimport --type csv --db nyse_a02_db --collection nyse_a02_col --headerline $f
 done
 ```
+
+### Running the bash file
+
+```
+sudo vi mongo_a02.sh
+bash mongo_a02.sh
+```
+
+Output:
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mongoimport_output.png?raw=true)
 
 ## PART 3.1. Use the NYSE database to find the average price of stock_price_high values for each stock using MapReduce.
 
