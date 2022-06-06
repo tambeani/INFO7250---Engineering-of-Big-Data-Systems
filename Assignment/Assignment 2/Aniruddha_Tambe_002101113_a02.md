@@ -168,7 +168,24 @@ Using the `aggregate()` function of mongodb for calculation the average stock pr
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_aggregate_output.png?raw=true)
 
 ## PART 5.1 - PROGRAMMING ASSIGNMENT
-Import the Movielens dataset into MongoDB. Refer to README about file contents and headings.
+
+Import the Movielens dataset into MongoDB. 
+
+```
+cd ~
+curl -O https://files.grouplens.org/datasets/movielens/ml-1m.zip
+sudo apt install -y unzip
+unzip ml-1m.zip
+cd ml-1m
+cp ratings.dat ratings.csv
+cp movies.dat movies.csv
+cp users.dat users.csv
+sed -i 's/::/,/g' ratings.csv
+sed -i 's/::/,/g' movies.csv
+sed -i 's/::/,/g' users.csv
+```
+
+Refer to README about file contents and headings.
 https://grouplens.org/datasets/movielens/1m/ (Links to an external site.) (Links to an external site.)   [you may replace :: in the dateset with comma or tab to import]
 
 Find the number Females and Males from the users collection using MapReduce. Do the same thing using count() to compare the results.
