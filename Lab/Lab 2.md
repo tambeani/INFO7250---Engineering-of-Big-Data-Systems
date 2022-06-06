@@ -1,219 +1,219 @@
-# INFO 7250 - Lab 2 - MongoCompass & Driver API
+  # INFO 7250 - Lab 2 - MongoCompass & Driver API
 
-## Install Mongo Compass
+  ## Install Mongo Compass
 
-**MongoCompass:**
+  **MongoCompass:**
 
-It the user-interface for interacting with MongoDB in the backend. Its similar to workbench on MySQL db.
+  It the user-interface for interacting with MongoDB in the backend. Its similar to workbench on MySQL db.
 
-**Indexing:**
+  **Indexing:**
 
-Helps us uniquely identify each row in a database. The index can help achieve the "unique" property in a collection.
+  Helps us uniquely identify each row in a database. The index can help achieve the "unique" property in a collection.
 
-**Used for:**
+  **Used for:**
 
-1. Create a database
-2. Importing .csv files
-3. Analyze functionality
+  1. Create a database
+  2. Importing .csv files
+  3. Analyze functionality
 
-## Import movielens 1m dataset
+  ## Import movielens 1m dataset
 
-Download dataset - https://files.grouplens.org/datasets/movielens/ml-1m.zip<br/>
- 
-a. Change the ratings.dat file into ratings.csv<br/>
-b. Add headers for all columns<br/>
-c. Change the datatype of rating to number<br/>
-d. Add a new database as "movie_lens"<br/>
-e. Add a new collection as "ratings"<br/>
+  Download dataset - https://files.grouplens.org/datasets/movielens/ml-1m.zip<br/>
+  
+  a. Change the ratings.dat file into ratings.csv<br/>
+  b. Add headers for all columns<br/>
+  c. Change the datatype of rating to number<br/>
+  d. Add a new database as "movie_lens"<br/>
+  e. Add a new collection as "ratings"<br/>
 
-## Define a pipeline for performing below aggregations:
+  ## Define a pipeline for performing below aggregations:
 
-1. Find the average rating per movie_id:
+  1. Find the average rating per movie_id:
 
-&emsp;key: movie_id<br/>
-&emsp;value: rating
+  &emsp;key: movie_id<br/>
+  &emsp;value: rating
 
-&emsp;Define below aggregator in $group stage in MongoCompass:
+  &emsp;Define below aggregator in $group stage in MongoCompass:
+    ```
+    {
+      _id: "$movie_id",
+      rating_avg: {
+        $avg: "$rating"
+      }
+    }
+    ```
+
+  2. Sort the rating in descending order: 
+
+  &emsp;Define below stage:
   ```
   {
-    _id: "$movie_id",
-    rating_avg: {
-      $avg: "$rating"
-    }
+    rating_avg: -1
   }
   ```
 
-2. Sort the rating in descending order: 
+  3. Filter only movies with average rating greater than equal to 4:
 
-&emsp;Define below stage:
-```
-{
-  rating_avg: -1
-}
-```
+  ```
+  {
+    rating_avg: {$gte: 4}
+  }
+  ```
+  ## Using MongoDB Java API on Eclipse:
 
-3. Filter only movies with average rating greater than equal to 4:
+  1. Create a Maven project
 
-```
-{
-  rating_avg: {$gte: 4}
-}
-```
-## Using MongoDB Java API on Eclipse:
+      Adding the mongodb dependencies to the pom.xml we can connect to MongoDB for performing different operations.
 
-1. Create a Maven project
+      We have 3 types of mongo drivers, legacy, modern & bundled (i.e legacy + modern). The legacy driver differs from the modern drivers in the way of creating the mongo client object. 
 
-    Adding the mongodb dependencies to the pom.xml we can connect to MongoDB for performing different operations.
+      Legacy Driver:<br/>
+      ```
+      MongoClient mongoClient = new MongoClient();
+      ```
 
-    We have 3 types of mongo drivers, legacy, modern & bundled (i.e legacy + modern). The legacy driver differs from the modern drivers in the way of creating the mongo client object. 
+      Modern Driver:<br/>
+      ```
+      MongoClient mongoClient = MongoClients.create();
+      ```
 
-    Legacy Driver:<br/>
-    ```
-    MongoClient mongoClient = new MongoClient();
-    ```
+      This approach eliminates the need for instantiating a new object everytime we need to establish a connection.
 
-    Modern Driver:<br/>
-    ```
-    MongoClient mongoClient = MongoClients.create();
-    ```
+      **Latest** *maven-dependency*:<br/>
+      ```
+      <dependency>
+          <groupId>org.mongodb</groupId>
+          <artifactId>mongo-java-driver</artifactId>
+          <version>3.12.11</version>
+      </dependency>
+      ```
 
-    This approach eliminates the need for instantiating a new object everytime we need to establish a connection.
+  2. Creating a connection class
 
-    **Latest** *maven-dependency*:<br/>
-    ```
-    <dependency>
-        <groupId>org.mongodb</groupId>
-        <artifactId>mongo-java-driver</artifactId>
-        <version>3.12.11</version>
-    </dependency>
-    ```
+      We can now begin by establishing a connection with mongodb & start executing operations on it.
 
-2. Creating a connection class
+      ```// Establish connection using modern client
+      MongoClient client = MongoClients.create();
 
-    We can now begin by establishing a connection with mongodb & start executing operations on it.
+      // Connect to mongodb
+      MongoDatabase nyse_lab = client.getDatabase("lab_2");
 
-    ```// Establish connection using modern client
-    MongoClient client = MongoClients.create();
+      // Create/get collections
+      MongoCollection<Document>  nyse_A = nyse_lab.getCollection("nyse_B");
+      ```
 
-    // Connect to mongodb
-    MongoDatabase nyse_lab = client.getDatabase("lab_2");
+  3. Importing csv files
 
-    // Create/get collections
-    MongoCollection<Document>  nyse_A = nyse_lab.getCollection("nyse_B");
-    ```
+      For this, we can use the scanner & file api to provide location of the csv file for importing.
 
-3. Importing csv files
+      ```
+      // Importing the csv file
+      File nyse_csv = new File("C:\\Users\\18573\\Desktop\\BigData\\INFO7250---Engineering-of-Big-Data-Systems\\dataset","NYSE_daily_prices_A.csv");
 
-    For this, we can use the scanner & file api to provide location of the csv file for importing.
+      Scanner scanner = new Scanner(nyse_csv);
+      ```
 
-    ```
-    // Importing the csv file
-    File nyse_csv = new File("C:\\Users\\18573\\Desktop\\BigData\\INFO7250---Engineering-of-Big-Data-Systems\\dataset","NYSE_daily_prices_A.csv");
+  4. Iterating through the csv to add the documents to a list
 
-    Scanner scanner = new Scanner(nyse_csv);
-    ```
+      ```
+      // Adding a new line to list documents
+      List<Document> documents = new ArrayList<Document>();
 
-4. Iterating through the csv to add the documents to a list
-
-    ```
-    // Adding a new line to list documents
-    List<Document> documents = new ArrayList<Document>();
-
-    // Looping through the rows of the csv file
-    int count = 0;
-    while(scanner.hasNext()) {
-            
-      // Create a new document for each row to be added
-      Document currentRow = new Document(); 
-      
-      // Get each line of the csv file
-      String line = scanner.nextLine();
-      
-      // Split the line based on the token of ","
-      String[] tokens = line.split(",");
-      
-      if(tokens[0].equals("exchange")) {
-        //Skipping the headers line
-        continue;
+      // Looping through the rows of the csv file
+      int count = 0;
+      while(scanner.hasNext()) {
+              
+        // Create a new document for each row to be added
+        Document currentRow = new Document(); 
+        
+        // Get each line of the csv file
+        String line = scanner.nextLine();
+        
+        // Split the line based on the token of ","
+        String[] tokens = line.split(",");
+        
+        if(tokens[0].equals("exchange")) {
+          //Skipping the headers line
+          continue;
+        }
+        
+        // Adding attributes & values to the row document
+        currentRow.append("exchange", tokens[0]);
+        currentRow.append("stock_symbol", tokens[1]);
+        currentRow.append("date", tokens[2]);
+        currentRow.append("stock_price_open", Double.parseDouble(tokens[3]));
+        currentRow.append("stock_price_high", Double.parseDouble(tokens[4]));
+        currentRow.append("stock_price_low", Double.parseDouble(tokens[5]));
+        currentRow.append("stock_price_close", Double.parseDouble(tokens[6]));
+        currentRow.append("stock_volume", Double.parseDouble(tokens[7]));
+        currentRow.append("stock_price_adj_close", Double.parseDouble(tokens[8]));
+        
+        // Adding the row to the list of documents
+        documents.add(currentRow);
+        count++;
+        
       }
-      
-      // Adding attributes & values to the row document
-      currentRow.append("exchange", tokens[0]);
-      currentRow.append("stock_symbol", tokens[1]);
-      currentRow.append("date", tokens[2]);
-      currentRow.append("stock_price_open", Double.parseDouble(tokens[3]));
-      currentRow.append("stock_price_high", Double.parseDouble(tokens[4]));
-      currentRow.append("stock_price_low", Double.parseDouble(tokens[5]));
-      currentRow.append("stock_price_close", Double.parseDouble(tokens[6]));
-      currentRow.append("stock_volume", Double.parseDouble(tokens[7]));
-      currentRow.append("stock_price_adj_close", Double.parseDouble(tokens[8]));
-      
-      // Adding the row to the list of documents
-      documents.add(currentRow);
-      count++;
-      
-    }
 
-    ```
+      ```
 
-5. Add the documents to the collection
+  5. Add the documents to the collection
 
-    ```
-    //Insert the list of documents to the collection
-    nyse_b.insertMany(documents);
-    System.out.print("Inserted rows: "+count);
-    ```
+      ```
+      //Insert the list of documents to the collection
+      nyse_b.insertMany(documents);
+      System.out.print("Inserted rows: "+count);
+      ```
 
-    Output:
+      Output:
 
-    Eclipse:
-    ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_insertmany_output.png?raw=true)
+      Eclipse:
+      ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_insertmany_output.png?raw=true)
 
 
-    MongoCompass:
-    ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_mongocompass_insertmany_output.png?raw=true)
+      MongoCompass:
+      ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_mongocompass_insertmany_output.png?raw=true)
 
-6. Define a pipeline for aggregation:
+  6. Define a pipeline for aggregation:
 
-    ```
-    // Define a pipeline for aggregation
-    List<Document> aggregated = nyse_b.aggregate(
-        Arrays.asList(
-            Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
-            Aggregates.sort(Sorts.descending("stock_avg"))
-            )
-        ).into(new ArrayList<>());
+      ```
+      // Define a pipeline for aggregation
+      List<Document> aggregated = nyse_b.aggregate(
+          Arrays.asList(
+              Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
+              Aggregates.sort(Sorts.descending("stock_avg"))
+              )
+          ).into(new ArrayList<>());
 
-    // Adding the aggregated documents in a new collection
-    lab_2.getCollection("stock_avg_collection").insertMany(aggregated);
-    ```
+      // Adding the aggregated documents in a new collection
+      lab_2.getCollection("stock_avg_collection").insertMany(aggregated);
+      ```
 
-    OR
+      OR
 
-    ```
-    // Define printBlock for each iterable
-    Block<Document> printBlock = new INFO7250Lab_2();
+      ```
+      // Define printBlock for each iterable
+      Block<Document> printBlock = new INFO7250Lab_2();
 
-    // Define a pipeline for aggregation
-    //List<Document> aggregated = 
-    nyse_b.aggregate(
-        Arrays.asList(
-            Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
-            Aggregates.sort(Sorts.descending("stock_avg"))
-            )
-          ).forEach(printBlock);
-    ```
+      // Define a pipeline for aggregation
+      //List<Document> aggregated = 
+      nyse_b.aggregate(
+          Arrays.asList(
+              Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
+              Aggregates.sort(Sorts.descending("stock_avg"))
+              )
+            ).forEach(printBlock);
+      ```
 
-    Output:<br/>
-    ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_aggregate_output.png?raw=true)
+      Output:<br/>
+      ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_aggregate_output.png?raw=true)
 
 
-7. Close the connection
+  7. Close the connection
 
-    ```
-    // Close the connection
-    client.close();
-    ```
+      ```
+      // Close the connection
+      client.close();
+      ```
 
 
 

@@ -31,7 +31,7 @@ sudo apt install -y mongodb
 cd ..
 sudo mkdir /usr/bin/data/db
 sudo chmod 777 /usr/bin/data/db
-/usr/bin/mongod --db-path=/usr/bin/data/db
+/usr/bin/mongod --dbpath=/usr/bin/data/db
 ```
 
 This should start the mongodb daemon-process. Run below code for checking if db is running:<br/>
@@ -147,7 +147,24 @@ Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Bi
 
 
 ## PART 4. Calculate the average stock price of each price of all stocks using $avg aggregation.
-https://docs.mongodb.com/manual/reference/operator/aggregation/avg/ (Links to an external site.) (Links to an external site.)
+
+Using the `aggregate()` function of mongodb for calculation the average stock price:
+
+	```
+	db.nyse_a02_col.aggregate([
+					{
+						$group: { _id: "$stock_symbol",
+						stock_open_avg:{$avg: "$stock_price_open"},
+						stock_high_avg:{$avg: "$stock_price_high"},
+						stock_low_avg:{$avg: "$stock_price_low"},
+						stock_close_avg:{$avg: "$stock_price_close"},
+						stock_adj_avg:{$avg: "$stock_price_adj_close"}}	
+					},
+					{
+						$sort: {stock_symbol: -1}
+					}
+				]);
+	```
 
 ## PART 5.1 - PROGRAMMING ASSIGNMENT
 Import the Movielens dataset into MongoDB. Refer to README about file contents and headings.
