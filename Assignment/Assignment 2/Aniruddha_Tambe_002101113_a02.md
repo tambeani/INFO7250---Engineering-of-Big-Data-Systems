@@ -105,8 +105,46 @@ db.stock_avg_collection.find().pretty();
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mapreduce_pretty_output.png?raw=true)
 
 ## PART 3.2. Part 3.1 result will not be correct as AVERAGE is a commutative operation but not associative. Use a FINALIZER to find the correct average.
-(Hint: pass sum and count from the reducer)
-(https://docs.mongodb.com/manual/reference/method/db.collection.mapReduce/index.html)
+
+### Redefine map,reduce & finalizer:
+
+Map function:<br/>
+```
+var map_final = function(){
+	emit(this.stock_symbol,{sum: this.stock_price_high,count:1});
+}
+```
+
+Reduce function:<br/>
+```
+var reduce_final = function(stock_symbol,price_out){
+	var num = {sum:0,count:0}
+	for(var i=0; i<price_out.length;i++){
+		num.sum += price_out[i].sum;
+		num.count += price_out[i].count;
+
+	}
+	return num;
+};
+```
+
+Finalize function:<br/>
+```
+var finalise = function(stock_symbol,result){
+	result.avg = result.sum/result.count;
+	return result.avg;
+};
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_redef_output.png?raw=true)
+
+### Run mapReduce with finalize:
+```
+db.nyse_a02_col.mapReduce(map_final,reduce_final,{out: "stock_avg_final_collection",finalize:finalise});
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mapreducefinal_output.png?raw=true)
+
 
 ## PART 4. Calculate the average stock price of each price of all stocks using $avg aggregation.
 https://docs.mongodb.com/manual/reference/operator/aggregation/avg/ (Links to an external site.) (Links to an external site.)
