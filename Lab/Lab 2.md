@@ -1,4 +1,4 @@
-# Lab 2
+# INFO 7250 - Lab 2 - MongoCompass & Driver API
 
 ## Install Mongo Compass
 
