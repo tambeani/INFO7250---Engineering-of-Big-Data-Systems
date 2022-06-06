@@ -20,7 +20,7 @@ Note: If you cannot access the chapters, enter your neu email as @northeastern.e
  curl -O http://newton.neu.edu/nyse/NYSE_daily_prices_A.csv
  ```
 
-*Note:Before we begin, we need to make sure that mongodb is installed on Linux subsystem.*<br/>Run below lines of code on a WSL:<br/>
+*Note:  Before we begin, we need to make sure that mongodb is installed on Linux subsystem.*<br/>Run below lines of code on a WSL:<br/>
 ```
 sudo apt install -y mongodb
 cd ..
@@ -35,17 +35,17 @@ This should start the mongodb daemon-process.<br/>Run below code for checking if
 sudo lsof -i -P -n|grep LISTEN
 ```
 
-### .sh file
+### Scripting the .sh file
 ```
 #!/bin/bash
-FILES=./dataset/NYSE_daily_prices_A.csv
+FILES=./NYSE_daily_prices_A.csv
 for f in $FILES
 do
   echo "Processing $f ..."
   # set MONGODB_HOME environment
   MONGODB_HOME=/usr/bin
   $MONGODB_HOME/mongoimport --type csv --db nyse_a02_db --collection nyse_a02_col --headerline $f
-Done
+done
 ```
 
 ## PART 3.1. Use the NYSE database to find the average price of stock_price_high values for each stock using MapReduce.
