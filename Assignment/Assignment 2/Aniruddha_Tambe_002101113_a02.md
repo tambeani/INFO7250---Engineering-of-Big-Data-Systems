@@ -1,6 +1,6 @@
 ## PART 1 - READING ASSIGNMENT 
 
-https://learning.oreilly.com/library/view/mongodb-in-action/9781617291609/?ar (Links to an external site.) (Links to an external site.)
+https://learning.oreilly.com/library/view/mongodb-in-action/9781617291609/?ar
 
   Chapter 4. Document-oriented data
   Chapter 5. Constructing queries
@@ -14,7 +14,7 @@ Note: If you cannot access the chapters, enter your neu email as @northeastern.e
  
  NYSE Dataset Link: http://newton.neu.edu/nyse/NYSE_daily_prices_A.csv
 
- ### Downloading the dataset
+ ### Downloading the dataset:
 
  ```
  sudo apt install -y curl
@@ -43,7 +43,7 @@ sudo lsof -i -P -n|grep LISTEN
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mongod_process.png?raw=true)
 
-### Scripting the .sh file
+### Scripting the .sh file:
 ```
 #!/bin/bash
 FILES=./NYSE_daily_prices_A.csv
@@ -56,7 +56,7 @@ do
 done
 ```
 
-### Running the bash file
+### Running the bash file:
 
 ```
 sudo vi mongo_a02.sh
@@ -67,6 +67,42 @@ Output:
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mongoimport_output.png?raw=true)
 
 ## PART 3.1. Use the NYSE database to find the average price of stock_price_high values for each stock using MapReduce.
+
+### Start the mongodb shell:
+
+```
+cd ~
+/usr/bin/mongo
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mongoshell_startup.png?raw=true)
+
+### Define map & reduce function:
+
+```
+use nyse_a02_db
+var map = function(){emit(this.stock_symbol,this.stock_price_high);}
+var reduce = function(stock_symbol,stock_price_high){var avg = Array.avg(stock_price_high);return avg;}
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_map_reduce_function.png?raw=true)
+
+### Run mapReduce function:
+
+```
+db.nyse_a02_col.mapReduce(map,reduce,{out: "stock_avg_collection"});
+show collections
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mapreduce_output.png?raw=true)
+
+### Printing mapReduce output:
+
+```
+db.stock_avg_collection.find().pretty();
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_mapreduce_pretty_output.png?raw=true)
 
 ## PART 3.2. Part 3.1 result will not be correct as AVERAGE is a commutative operation but not associative. Use a FINALIZER to find the correct average.
 (Hint: pass sum and count from the reducer)
