@@ -200,7 +200,7 @@ e. Add a new collection as "ratings"<br/>
           ).forEach(printBlock);
     ```
 
-    Output:
+    Output:<br/>
     ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_aggregate_output.png?raw=true)
 
 
