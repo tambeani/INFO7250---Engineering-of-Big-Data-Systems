@@ -155,7 +155,9 @@ e. Add a new collection as "ratings"<br/>
 		System.out.print("Inserted rows: "+count);
     ```
 
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_insertmany_output.png?raw=true)
+    Output:
+    
+    ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_insertmany_output.png?raw=true)
 
 
 
