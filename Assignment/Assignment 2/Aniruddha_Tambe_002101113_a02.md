@@ -152,18 +152,18 @@ Using the `aggregate()` function of mongodb for calculation the average stock pr
 
 	```
 	db.nyse_a02_col.aggregate([
-					{
-						$group: { _id: "$stock_symbol",
-						stock_open_avg:{$avg: "$stock_price_open"},
-						stock_high_avg:{$avg: "$stock_price_high"},
-						stock_low_avg:{$avg: "$stock_price_low"},
-						stock_close_avg:{$avg: "$stock_price_close"},
-						stock_adj_avg:{$avg: "$stock_price_adj_close"}}	
-					},
-					{
-						$sort: {stock_symbol: -1}
-					}
-				]);
+		{
+			$group: { _id: "$stock_symbol",
+			stock_open_avg:{$avg: "$stock_price_open"},
+			stock_high_avg:{$avg: "$stock_price_high"},
+			stock_low_avg:{$avg: "$stock_price_low"},
+			stock_close_avg:{$avg: "$stock_price_close"},
+			stock_adj_avg:{$avg: "$stock_price_adj_close"}}	
+		},
+		{
+			$sort: {stock_symbol: -1}
+		}
+	]);
 	```
 
 ## PART 5.1 - PROGRAMMING ASSIGNMENT
