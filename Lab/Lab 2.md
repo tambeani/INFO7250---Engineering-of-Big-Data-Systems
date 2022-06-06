@@ -89,13 +89,13 @@ e. Add a new collection as "ratings"<br/>
     We can now begin by establishing a connection with mongodb & start executing operations on it.
 
     ```// Establish connection using modern client
-		MongoClient client = MongoClients.create();
-		
-		// Connect to mongodb
-		MongoDatabase nyse_lab = client.getDatabase("lab_2");
-		
-		// Create/get collections
-		MongoCollection<Document>  nyse_A = nyse_lab.getCollection("nyse_B");
+    MongoClient client = MongoClients.create();
+
+    // Connect to mongodb
+    MongoDatabase nyse_lab = client.getDatabase("lab_2");
+
+    // Create/get collections
+    MongoCollection<Document>  nyse_A = nyse_lab.getCollection("nyse_B");
     ```
 
 3. Importing csv files
@@ -105,7 +105,7 @@ e. Add a new collection as "ratings"<br/>
     ```
     // Importing the csv file
     File nyse_csv = new File("C:\\Users\\18573\\Desktop\\BigData\\INFO7250---Engineering-of-Big-Data-Systems\\dataset","NYSE_daily_prices_A.csv");
-		
+
     Scanner scanner = new Scanner(nyse_csv);
     ```
 
@@ -156,8 +156,8 @@ e. Add a new collection as "ratings"<br/>
 
     ```
     //Insert the list of documents to the collection
-		nyse_b.insertMany(documents);
-		System.out.print("Inserted rows: "+count);
+    nyse_b.insertMany(documents);
+    System.out.print("Inserted rows: "+count);
     ```
 
     Output:
@@ -170,6 +170,45 @@ e. Add a new collection as "ratings"<br/>
     ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_mongocompass_insertmany_output.png?raw=true)
 
 6. Define a pipeline for aggregation:
+
+    ```
+    // Define a pipeline for aggregation
+    List<Document> aggregated = nyse_b.aggregate(
+        Arrays.asList(
+            Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
+            Aggregates.sort(Sorts.descending("stock_avg"))
+            )
+        ).into(new ArrayList<>());
+
+    // Adding the aggregated documents in a new collection
+    lab_2.getCollection("stock_avg_collection").insertMany(aggregated);
+    ```
+
+    OR
+
+    ```
+    // Define printBlock for each iterable
+    Block<Document> printBlock = new INFO7250Lab_2();
+
+    // Define a pipeline for aggregation
+    //List<Document> aggregated = 
+    nyse_b.aggregate(
+        Arrays.asList(
+            Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
+            Aggregates.sort(Sorts.descending("stock_avg"))
+            )
+          ).forEach(printBlock);
+    ```
+
+7. Close the connection
+
+    ```
+    // Close the connection
+    client.close();
+    ```
+
+
+
 
 
 

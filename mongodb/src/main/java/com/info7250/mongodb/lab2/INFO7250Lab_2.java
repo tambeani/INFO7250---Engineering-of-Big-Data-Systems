@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import org.bson.Document;
 
+import com.mongodb.Block;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -18,8 +19,9 @@ import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Indexes;
 import com.mongodb.client.model.Sorts;
 
-public class INFO7250Lab_2 {
+public class INFO7250Lab_2 implements Block<Document> {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		
@@ -78,15 +80,30 @@ public class INFO7250Lab_2 {
 		nyse_b.insertMany(documents);
 		System.out.print("Inserted rows: "+count);
 		
+		// Define printBlock for each iterable
+		Block<Document> printBlock = new INFO7250Lab_2();
+		
 		// Define a pipeline for aggregation
-		List<Document> aggregated = nyse_b.aggregate(
+		//List<Document> aggregated = 
+		nyse_b.aggregate(
 				Arrays.asList(
 						Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
 						Aggregates.sort(Sorts.descending("stock_avg"))
 						)
-				).into(new ArrayList<>());
+				).forEach(printBlock);
+				//.into(new ArrayList<>());
 		
+		//lab_2.getCollection("stock_avg_collection").insertMany(aggregated);
+		
+		// Close the connection
+		client.close();
+	}
 
+	@Override
+	public void apply(Document t) {
+		// TODO Auto-generated method stub
+		System.out.println(t.toJson());
+		
 	}
 
 }
