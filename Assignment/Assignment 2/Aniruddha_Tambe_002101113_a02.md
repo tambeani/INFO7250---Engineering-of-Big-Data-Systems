@@ -20,7 +20,7 @@ Note: If you cannot access the chapters, enter your neu email as @northeastern.e
  curl -O http://newton.neu.edu/nyse/NYSE_daily_prices_A.csv
  ```
 
-*Note:  Before we begin, we need to make sure that mongodb is installed on Linux subsystem.*<br/>Run below lines of code on a WSL:<br/>
+**Note:**  Before we begin, we need to make sure that mongodb is installed on Linux subsystem.Run below lines of code on a WSL:<br/>
 ```
 sudo apt install -y mongodb
 cd ..
@@ -29,7 +29,7 @@ sudo chmod 777 /usr/bin/data/db
 /usr/bin/mongod --db-path=/usr/bin/data/db
 ```
 
-This should start the mongodb daemon-process.<br/>Run below code for checking if db is running:<br/>
+This should start the mongodb daemon-process.Run below code for checking if db is running:<br/>
 
 ```
 sudo lsof -i -P -n|grep LISTEN
