@@ -16,7 +16,7 @@ Helps us uniquely identify each row in a database. The index can help achieve th
 2. Importing .csv files
 3. Analyze functionality
 
-## 2. Import movielens 1m dataset
+## Import movielens 1m dataset
 
 Download dataset - https://files.grouplens.org/datasets/movielens/ml-1m.zip<br/>
  
@@ -26,7 +26,7 @@ c. Change the datatype of rating to number<br/>
 d. Add a new database as "movie_lens"<br/>
 e. Add a new collection as "ratings"<br/>
 
-## 3. Define a pipeline for performing below aggregations:
+## Define a pipeline for performing below aggregations:
 
 1. Find the average rating per movie_id:
 
@@ -59,7 +59,7 @@ e. Add a new collection as "ratings"<br/>
   rating_avg: {$gte: 4}
 }
 ```
-## 4. Using MongoDB Java API on Eclipse:
+## Using MongoDB Java API on Eclipse:
 
 1. Create a Maven project
 
@@ -116,9 +116,9 @@ e. Add a new collection as "ratings"<br/>
 		List<Document> documents = new ArrayList<Document>();
 		
 		// Looping through the rows of the csv file
-    int count = 0;
+		int count = 0;
 		while(scanner.hasNext()) {
-			
+						
 			// Create a new document for each row to be added
 			Document currentRow = new Document(); 
 			
@@ -128,20 +128,25 @@ e. Add a new collection as "ratings"<br/>
 			// Split the line based on the token of ","
 			String[] tokens = line.split(",");
 			
+			if(tokens[0].equals("exchange")) {
+				//Skipping the headers line
+				continue;
+			}
+			
 			// Adding attributes & values to the row document
 			currentRow.append("exchange", tokens[0]);
 			currentRow.append("stock_symbol", tokens[1]);
 			currentRow.append("date", tokens[2]);
-			currentRow.append("stock_price_open", tokens[3]);
-			currentRow.append("stock_price_high", tokens[4]);
-			currentRow.append("stock_price_low", tokens[5]);
-			currentRow.append("stock_price_close", tokens[6]);
-			currentRow.append("stock_volume", tokens[7]);
-			currentRow.append("stock_price_adj_close", tokens[8]);
+			currentRow.append("stock_price_open", Double.parseDouble(tokens[3]));
+			currentRow.append("stock_price_high", Double.parseDouble(tokens[4]));
+			currentRow.append("stock_price_low", Double.parseDouble(tokens[5]));
+			currentRow.append("stock_price_close", Double.parseDouble(tokens[6]));
+			currentRow.append("stock_volume", Double.parseDouble(tokens[7]));
+			currentRow.append("stock_price_adj_close", Double.parseDouble(tokens[8]));
 			
 			// Adding the row to the list of documents
 			documents.add(currentRow);
-      count++;
+			count++;
 			
 		}
 
@@ -165,6 +170,8 @@ e. Add a new collection as "ratings"<br/>
     ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_mongocompass_insertmany_output.png?raw=true)
 
 6. Define a pipeline for aggregation:
+
+
 
 
 

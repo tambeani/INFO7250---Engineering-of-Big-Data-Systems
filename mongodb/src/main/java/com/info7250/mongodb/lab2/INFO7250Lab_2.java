@@ -3,6 +3,7 @@ package com.info7250.mongodb.lab2;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +13,10 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Accumulators;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.Indexes;
+import com.mongodb.client.model.Sorts;
 
 public class INFO7250Lab_2 {
 
@@ -56,12 +61,12 @@ public class INFO7250Lab_2 {
 			currentRow.append("exchange", tokens[0]);
 			currentRow.append("stock_symbol", tokens[1]);
 			currentRow.append("date", tokens[2]);
-			currentRow.append("stock_price_open", tokens[3]);
-			currentRow.append("stock_price_high", tokens[4]);
-			currentRow.append("stock_price_low", tokens[5]);
-			currentRow.append("stock_price_close", tokens[6]);
-			currentRow.append("stock_volume", tokens[7]);
-			currentRow.append("stock_price_adj_close", tokens[8]);
+			currentRow.append("stock_price_open", Double.parseDouble(tokens[3]));
+			currentRow.append("stock_price_high", Double.parseDouble(tokens[4]));
+			currentRow.append("stock_price_low", Double.parseDouble(tokens[5]));
+			currentRow.append("stock_price_close", Double.parseDouble(tokens[6]));
+			currentRow.append("stock_volume", Double.parseDouble(tokens[7]));
+			currentRow.append("stock_price_adj_close", Double.parseDouble(tokens[8]));
 			
 			// Adding the row to the list of documents
 			documents.add(currentRow);
@@ -69,10 +74,19 @@ public class INFO7250Lab_2 {
 			
 		}
 		
-		//Insert the list of documents to the collection
-		//nyse_b.insertMany(documents);
+		// Insert the list of documents to the collection
+		nyse_b.insertMany(documents);
 		System.out.print("Inserted rows: "+count);
 		
+		// Define a pipeline for aggregation
+		List<Document> aggregated = nyse_b.aggregate(
+				Arrays.asList(
+						Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
+						Aggregates.sort(Sorts.descending("stock_avg"))
+						)
+				).into(new ArrayList<>());
+		
+
 	}
 
 }
