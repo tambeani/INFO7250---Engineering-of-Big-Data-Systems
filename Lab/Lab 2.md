@@ -104,7 +104,7 @@ e. Add a new collection as "ratings"<br/>
 
     ```
     // Importing the csv file
-		File nyse_csv = new File("C:\\Users\\18573\\Desktop\\BigData\\INFO7250---Engineering-of-Big-Data-Systems\\dataset","NYSE_daily_prices_A.csv");
+    File nyse_csv = new File("C:\\Users\\18573\\Desktop\\BigData\\INFO7250---Engineering-of-Big-Data-Systems\\dataset","NYSE_daily_prices_A.csv");
 		
     Scanner scanner = new Scanner(nyse_csv);
     ```
@@ -116,6 +116,7 @@ e. Add a new collection as "ratings"<br/>
 		List<Document> documents = new ArrayList<Document>();
 		
 		// Looping through the rows of the csv file
+    int count = 0;
 		while(scanner.hasNext()) {
 			
 			// Create a new document for each row to be added
@@ -140,10 +141,21 @@ e. Add a new collection as "ratings"<br/>
 			
 			// Adding the row to the list of documents
 			documents.add(currentRow);
+      count++;
 			
 		}
-    
+
     ```
+
+5. Add the documents to the collection
+
+    ```
+    //Insert the list of documents to the collection
+		nyse_b.insertMany(documents);
+		System.out.print("Inserted rows: "+count);
+    ```
+
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lab2_insertmany_output.png?raw=true)
 
 
 
