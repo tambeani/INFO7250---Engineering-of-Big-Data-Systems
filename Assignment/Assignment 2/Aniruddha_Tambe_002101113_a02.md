@@ -185,11 +185,17 @@ sed -i 's/::/,/g' movies.csv
 sed -i 's/::/,/g' users.csv
 ```
 
-Refer to README about file contents and headings.
-https://grouplens.org/datasets/movielens/1m/ (Links to an external site.) (Links to an external site.)   [you may replace :: in the dateset with comma or tab to import]
+Let us added headers to each csv file
 
-Find the number Females and Males from the users collection using MapReduce. Do the same thing using count() to compare the results.
-Find the number of Movies per year using MapReduce
+```
+sed -i '1s/^/user_id,gender,age,occupation,zipcode\n/' users.csv
+sed -i '1s/^/movie_id,title,genre\n/' movies.csv
+sed -i '1s/^/user_id,movie_id,rating,timestamp\n/' ratings.csv
+```
+
+**Q. Find the number Females and Males from the users collection using MapReduce. Do the same thing using count() to compare the results.**
+
+**Q.Find the number of Movies per year using MapReduce**
 Find the number of Movies per rating using MapReduce
 
 ## PART 5.2 - PROGRAMMING ASSIGNMENT
