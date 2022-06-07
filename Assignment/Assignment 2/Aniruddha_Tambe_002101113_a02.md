@@ -185,7 +185,7 @@ sed -i 's/::/,/g' movies.csv
 sed -i 's/::/,/g' users.csv
 ```
 
-Let us added headers to each csv file
+Let us add headers to each csv file
 
 ```
 sed -i '1s/^/user_id,gender,age,occupation,zipcode\n/' users.csv
@@ -193,10 +193,36 @@ sed -i '1s/^/movie_id,title,genre\n/' movies.csv
 sed -i '1s/^/user_id,movie_id,rating,timestamp\n/' ratings.csv
 ```
 
+Importing the csv files into collections
+```
+cd ~
+/usr/bin/mongoimport --type csv --db movielens --collection ratings --headerline ./ml-1m/ratings.csv
+/usr/bin/mongoimport --type csv --db movielens --collection users --headerline ./ml-1m/users.csv
+/usr/bin/mongoimport --type csv --db movielens --collection movies --headerline ./ml-1m/movies.csv
+```
 **Q. Find the number Females and Males from the users collection using MapReduce. Do the same thing using count() to compare the results.**
 
+Define a map function to emit the gender
+```
+var map = function(){
+	emit(this.gender,{count:1});
+};
+```
+
+Define a reduce function to count
+```
+var reduce = function(key,val){
+	var result = {count: 0}
+	
+	for(var i=0;i<val.length;i++){
+		
+	}
+};
+```
+
 **Q.Find the number of Movies per year using MapReduce**
-Find the number of Movies per rating using MapReduce
+
+**Q.Find the number of Movies per rating using MapReduce**
 
 ## PART 5.2 - PROGRAMMING ASSIGNMENT
   Repeat 5.1 using Aggregation Pipeline.
