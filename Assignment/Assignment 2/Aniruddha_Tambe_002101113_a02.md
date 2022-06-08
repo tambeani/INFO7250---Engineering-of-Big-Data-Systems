@@ -239,8 +239,31 @@ Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Bi
 
 **Q.Find the number of Movies per year using MapReduce**
 
-
 **Q.Find the number of Movies per rating using MapReduce**
+
+Define map function
+```
+var map = function(){
+	emit(this.rating,{"count":1});
+};
+```
+
+Define a reduce function
+```
+var reduce = function(key,values){
+	var result = {"count": 0};
+	values.forEach(function(value){ result.count += value.count;});
+	return result;
+};
+```
+
+Execute the mapReduce function
+```
+use movielens
+db.ratings.mapReduce(map,reduce,{out:"movies_per_rating"});
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_movies_per_rating_output.png?raw=true)
 
 ## PART 5.2 - PROGRAMMING ASSIGNMENT
   Repeat 5.1 using Aggregation Pipeline.
