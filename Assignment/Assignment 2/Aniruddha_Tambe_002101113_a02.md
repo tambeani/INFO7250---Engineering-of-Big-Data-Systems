@@ -202,6 +202,8 @@ cd ~
 ```
 **Q. Find the number Females and Males from the users collection using MapReduce. Do the same thing using count() to compare the results.**
 
+**Using MapReduce:**
+
 Define a map function to emit the gender
 ```
 var map = function(){
@@ -211,16 +213,32 @@ var map = function(){
 
 Define a reduce function to count
 ```
-var reduce = function(key,val){
-	var result = {count: 0}
-	
-	for(var i=0;i<val.length;i++){
-		
-	}
+var reduce = function(key,values){
+	var result = {count: 0};
+	values.forEach(function(value) { result.count += value.count; } );
+    return result;
 };
 ```
 
+Run the mapReduce command:
+```
+use movielens
+db.users.mapReduce(map,reduce,{out:"users_count_genderwise"});
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_genderwise_mapreduce_output.png?raw=true)
+
+**Using count():**
+
+```
+db.users.find({gender:"M"}).count();
+db.users.find({gender:"F"}).count();
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_genderwise_count_output.png?raw=true)
+
 **Q.Find the number of Movies per year using MapReduce**
+
 
 **Q.Find the number of Movies per rating using MapReduce**
 

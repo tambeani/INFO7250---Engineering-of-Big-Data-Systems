@@ -62,7 +62,56 @@ Replication helps to recover from hardware failure and service interruptions.
 Replication in MongoDB
 ----------------------
 
-A replica set is a group of mongodb instances that host the same data set.
+A replica set is a group of mongodb processes that host the same data set to provide redundancy,fault tolerance, high availability & automatic failover. The replica set consists of a primary node & multiple secondary nodes. The primary node recieves all write operations, which later are asynchronously replicated across all the secondaries.
+
+Fault tolerance
+---------------
+Fault tolerance for a replica set is the number of members that can become unavailable and still leave enough members in the set to elect a primary.
+
+example:
+
+-----------------|-------------------------------|---------------
+Number of members|Majority required to elect new |Fault tolerance
+-----------------|-------------------------------|---------------
+3		     |2					 |1
+-----------------|-------------------------------|---------------
+4		     |3					 |1
+-----------------|-------------------------------|---------------
+5		     |3					 |2
+-----------------|-------------------------------|---------------
+6		     |4					 |2
+-----------------|-------------------------------|---------------
+
+
+
+Automatic Failover
+------------------
+In the event when the primary fails to respond for over 10 seconds, a new primary node is elected from the replica set(an arbiter can be utilized for elections).
+
+Primary node
+------------
+Recieves all the write operations in the replica set which are recorded in its oplog. Secondaries replicate this log and apply the operations to their data sets. Read operations are accessibles across the replica set.
+
+Secondary node
+-------------
+They maintain a copy of the dataset from the primary node. You can configure a secondary to 
+
+1. Priority 0 replica set member
+ - Can't be elected as a primary
+2. Hidden replica set member
+ - Can't perform read operations
+ - They are priority 0 members
+3. Delayed replica set member
+ - Holds historical snapshots for recovery purpose
+ - Priority 0 members
+ - They are hidden members
+ - Ability to vote in elections
+4. Arbiter
+ - to add votes in elections in a set of even members
+
+
+
+
 
 
  
