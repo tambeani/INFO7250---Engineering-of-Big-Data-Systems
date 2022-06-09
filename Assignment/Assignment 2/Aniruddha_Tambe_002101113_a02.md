@@ -181,6 +181,7 @@ cp ratings.dat ratings.csv
 cp movies.dat movies.csv
 cp users.dat users.csv
 sed -i 's/::/,/g' ratings.csv
+sed -i 's/,/-/g' movies.csv
 sed -i 's/::/,/g' movies.csv
 sed -i 's/::/,/g' users.csv
 ```
@@ -223,7 +224,7 @@ var reduce = function(key,values){
 Run the mapReduce command:
 ```
 use movielens
-db.users.mapReduce(map,reduce,{out:"users_count_genderwise"});
+db.users.mapReduce(map,reduce);
 ```
 
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_genderwise_mapreduce_output.png?raw=true)
@@ -238,6 +239,45 @@ db.users.find({gender:"F"}).count();
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_genderwise_count_output.png?raw=true)
 
 **Q.Find the number of Movies per year using MapReduce**
+
+Lets add a field for adding year in the movies collection,
+```
+db.movies.find({}).forEach(
+	function(e,i){
+		var text = e.title || "";
+		e.year = text.toString().substr(e.title.length-5,4);
+		db.movies.save(e);
+});
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_year_added_output.png?raw=true)
+
+Define a map function:
+```
+var map = function(){
+	emit(this.year,{"count":1});
+};
+```
+
+Define a reduce function:
+```
+var reduce = function(key,values){
+	var result = {"count":0};
+	values.forEach(function(value){
+		result.count += value.count;
+	})
+	return result;
+};
+```
+
+Run the mapReduce function
+```
+use movielens
+db.movies.mapReduce(map,reduce,{out:"movies_per_year"});
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_movies_per_year_output.png?raw=true)
+
 
 **Q.Find the number of Movies per rating using MapReduce**
 
@@ -266,7 +306,43 @@ db.ratings.mapReduce(map,reduce,{out:"movies_per_rating"});
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_movies_per_rating_output.png?raw=true)
 
 ## PART 5.2 - PROGRAMMING ASSIGNMENT
-  Repeat 5.1 using Aggregation Pipeline.
+
+**Q. Find the number Females and Males from the users collection using aggregate.**
+
+```
+db.users.aggregate([
+	{
+		$group: {_id:"$gender", count:{ $sum: 1}}
+	}
+]);
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_genderwise_count_aggregate_output.png?raw=true)
+
+**Q.Find the number of Movies per year using MapReduce**
+
+```
+db.movies.aggregate([
+	{
+		$group: {_id:"$year", count:{ $sum: 1}}
+	}
+]);
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_movies_per_year_aggregate_output.png?raw=true)
+
+
+**Q.Find the number of Movies per rating using MapReduce**
+
+```
+db.ratings.aggregate([
+	{
+		$group: {_id:"$rating", count:{ $sum: 1}}
+	}
+]);
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_movies_per_rating_aggregate_output.png?raw=true)
 
 ## PART 6 - PROGRAMMING ASSIGNMENT [access.log  Download access.log]
 Write a Java (could be a console app - will only run once to import the data into MongoDB) program to read the access.log file (attached), and insert into access collection.  Once the data are inserted into MongoDB, do the followings using MapReduce:
