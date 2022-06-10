@@ -19,7 +19,7 @@ import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Sorts;
 
-public class INFO7250Assignment_2 {
+public class INFO7250Assignment_2 implements Block<Document> {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
@@ -28,66 +28,20 @@ public class INFO7250Assignment_2 {
 				MongoClient client = MongoClients.create();
 				
 				// Connect to mongodb
-				MongoDatabase lab_2 = client.getDatabase("lab_2");
+				MongoDatabase assignment_2 = client.getDatabase("logs");
 				
 				// Create/get collections
-				MongoCollection<Document>  nyse_b = lab_2.getCollection("nyse_B");
-				
-				// Importing the csv file
-				File nyse_csv = new File(".\\","NYSE_daily_prices_A.csv");
-				Scanner scanner = new Scanner(nyse_csv);
-				
-				// Adding a new line to list documents
-				List<Document> documents = new ArrayList<Document>();
-				
-				// Looping through the rows of the csv file
-				int count = 0;
-				while(scanner.hasNext()) {
-								
-					// Create a new document for each row to be added
-					Document currentRow = new Document(); 
-					
-					// Get each line of the csv file
-					String line = scanner.nextLine();
-					
-					// Split the line based on the token of ","
-					String[] tokens = line.split(",");
-					
-					if(tokens[0].equals("exchange")) {
-						//Skipping the headers line
-						continue;
-					}
-					
-					// Adding attributes & values to the row document
-					currentRow.append("exchange", tokens[0]);
-					currentRow.append("stock_symbol", tokens[1]);
-					currentRow.append("date", tokens[2]);
-					currentRow.append("stock_price_open", Double.parseDouble(tokens[3]));
-					currentRow.append("stock_price_high", Double.parseDouble(tokens[4]));
-					currentRow.append("stock_price_low", Double.parseDouble(tokens[5]));
-					currentRow.append("stock_price_close", Double.parseDouble(tokens[6]));
-					currentRow.append("stock_volume", Double.parseDouble(tokens[7]));
-					currentRow.append("stock_price_adj_close", Double.parseDouble(tokens[8]));
-					
-					// Adding the row to the list of documents
-					documents.add(currentRow);
-					count++;
-					
-				}
-				
-				// Insert the list of documents to the collection
-				nyse_b.insertMany(documents);
-				System.out.print("Inserted rows: "+count);
-				
+				MongoCollection<Document>  coll = assignment_2.getCollection("access");
+							
 				// Define printBlock for each iterable
-				Block<Document> printBlock = new INFO7250Lab_2();
+				Block<Document> printBlock = new INFO7250Assignment_2();
 				
 				// Define a pipeline for aggregation
 				//List<Document> aggregated = 
-				nyse_b.aggregate(
+				coll.aggregate(
 						Arrays.asList(
-								Aggregates.group("$stock_symbol",Accumulators.avg("stock_avg", "$stock_price_open")),
-								Aggregates.sort(Sorts.descending("stock_avg"))
+								Aggregates.group("$ip_address",Accumulators.sum("times_vistited", 1)),
+								Aggregates.sort(Sorts.descending("times_vistited"))
 								)
 						).forEach(printBlock);
 						//.into(new ArrayList<>());
@@ -97,6 +51,12 @@ public class INFO7250Assignment_2 {
 				// Close the connection
 				client.close();
 				
+	}
+
+	@Override
+	public void apply(Document t) {
+		// TODO Auto-generated method stub
+		System.out.println(t.toJson());
 	}
 	
 
