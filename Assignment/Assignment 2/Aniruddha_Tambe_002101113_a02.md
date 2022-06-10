@@ -400,6 +400,8 @@ import java.util.Scanner;
 import org.bson.Document;
 
 import com.mongodb.Block;
+import com.mongodb.MapReduceCommand;
+import com.mongodb.client.MapReduceIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -408,7 +410,7 @@ import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Sorts;
 
-public class INFO7250Assignment_2_6a_AGG implements Block<Document> {
+public class INFO7250Assignment_2_6a_MR implements Block<Document> {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
@@ -423,19 +425,34 @@ public class INFO7250Assignment_2_6a_AGG implements Block<Document> {
 				MongoCollection<Document>  coll = assignment_2.getCollection("access");
 							
 				// Define printBlock for each iterable
-				Block<Document> printBlock = new INFO7250Assignment_2_6a_AGG();
+				Block<Document> printBlock = new INFO7250Assignment_2_6a_MR();
+							
+				/*
+				 * Q. Number of times any webpage was visited by the same IP address
+				 */
 				
-				// Define a pipeline for aggregation
-				//List<Document> aggregated = 
-				coll.aggregate(
-						Arrays.asList(
-								Aggregates.group("$ip_address",Accumulators.sum("times_vistited", 1)),
-								Aggregates.sort(Sorts.descending("times_vistited"))
-								)
-						).forEach(printBlock);
-						//.into(new ArrayList<>());
+				// Define the map function
+				String map = "function(){"
+							+ "emit(this.ip_address," + "{\"count\":1});"
+						+ "}";
 				
-				//lab_2.getCollection("stock_avg_collection").insertMany(aggregated);
+				// Define the reduce function
+				String reduce = "function(key,values){"
+						+ "var result = {\"count\":1};"
+						+ "values.forEach("
+							+ "function(value){"
+								+"result.count += value.count;"
+							+ "});"
+							+" return result;"
+						+ "}";
+				
+				// Execute map reduce
+				MapReduceIterable<Document> result = coll.mapReduce(map,reduce);
+				
+				// Print the map reduce result
+				for(Document doc:result) {
+					System.out.println(doc.toJson());
+				}
 				
 				// Close the connection
 				client.close();
@@ -455,10 +472,10 @@ To run the code:
 ```
 cd ~
 cd INFO7250---Engineering-of-Big-Data-Systems/mongodb/
- mvn compile exec:java -Dexec.mainClass="com.info7250.mongodb.assignment.INFO7250Assignment_2_6a_AGG"
+ mvn compile exec:java -Dexec.mainClass="com.info7250.mongodb.assignment.INFO7250Assignment_2_6a_MR"
 ```
 
-Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_running_java_script.png?raw=true)
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_6a_mr_output.png?raw=true)
 
 
 **Q.Number of times any webpage was visited each month**
