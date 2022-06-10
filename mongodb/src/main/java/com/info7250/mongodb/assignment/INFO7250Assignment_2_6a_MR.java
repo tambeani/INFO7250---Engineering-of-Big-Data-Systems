@@ -52,7 +52,8 @@ public class INFO7250Assignment_2_6a_MR implements Block<Document> {
 						+ "values.forEach("
 							+ "function(value){"
 								+"result.count += value.count;"
-							+ "})"
+							+ "});"
+							+" return result;"
 						+ "}";
 				
 				// Execute map reduce
