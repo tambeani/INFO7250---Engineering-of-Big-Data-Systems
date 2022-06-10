@@ -438,7 +438,7 @@ public class INFO7250Assignment_2_6a_MR implements Block<Document> {
 				
 				// Define the reduce function
 				String reduce = "function(key,values){"
-						+ "var result = {\"count\":1};"
+						+ "var result = {\"count\":0};"
 						+ "values.forEach("
 							+ "function(value){"
 								+"result.count += value.count;"
@@ -545,7 +545,7 @@ public class INFO7250Assignment_2_6b_MR implements Block<Document> {
 				
 				// Define the reduce function
 				String reduce = "function(key,values){"
-						+ "var result = {\"count\":1};"
+						+ "var result = {\"count\":0};"
 						+ "values.forEach("
 							+ "function(value){"
 								+"result.count += value.count;"
