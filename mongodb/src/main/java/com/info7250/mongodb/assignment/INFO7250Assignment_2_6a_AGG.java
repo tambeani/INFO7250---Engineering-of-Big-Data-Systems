@@ -18,7 +18,7 @@ import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Sorts;
 
-public class INFO7250Assignment_2 implements Block<Document> {
+public class INFO7250Assignment_2_6a_AGG implements Block<Document> {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
@@ -33,7 +33,7 @@ public class INFO7250Assignment_2 implements Block<Document> {
 				MongoCollection<Document>  coll = assignment_2.getCollection("access");
 							
 				// Define printBlock for each iterable
-				Block<Document> printBlock = new INFO7250Assignment_2();
+				Block<Document> printBlock = new INFO7250Assignment_2_6a_AGG();
 				
 				// Define a pipeline for aggregation
 				//List<Document> aggregated = 

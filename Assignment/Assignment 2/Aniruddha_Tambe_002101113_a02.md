@@ -384,7 +384,9 @@ cd ~
 git clone git@github.com:tambeani/INFO7250---Engineering-of-Big-Data-Systems.git
 ```
 
-Below is the maven code:
+Below is the maven code for:
+
+**Q.Number of times any webpage was visited by the same IP address**
 ```
 package com.info7250.mongodb.assignment;
 
@@ -406,7 +408,7 @@ import com.mongodb.client.model.Accumulators;
 import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Sorts;
 
-public class INFO7250Assignment_2 implements Block<Document> {
+public class INFO7250Assignment_2_6a_AGG implements Block<Document> {
 
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
@@ -421,7 +423,7 @@ public class INFO7250Assignment_2 implements Block<Document> {
 				MongoCollection<Document>  coll = assignment_2.getCollection("access");
 							
 				// Define printBlock for each iterable
-				Block<Document> printBlock = new INFO7250Assignment_2();
+				Block<Document> printBlock = new INFO7250Assignment_2_6a_AGG();
 				
 				// Define a pipeline for aggregation
 				//List<Document> aggregated = 
@@ -453,12 +455,106 @@ To run the code:
 ```
 cd ~
 cd INFO7250---Engineering-of-Big-Data-Systems/mongodb/
- mvn compile exec:java -Dexec.mainClass="com.info7250.mongodb.assignment.INFO7250Assignment_2"
+ mvn compile exec:java -Dexec.mainClass="com.info7250.mongodb.assignment.INFO7250Assignment_2_6a_AGG"
 ```
 
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_running_java_script.png?raw=true)
 
 
+**Q.Number of times any webpage was visited each month**
+
+Let us process the `time_stamp` column to extract month data,
+```
+db.access.find({}).forEach(
+	function(e,i){
+		e.month = e.time_stamp.toString().substr(4,3);
+		db.access.save(e);
+});
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_month_added.png?raw=true)
+
+
+Below is the maven code:
+```
+```
+
 ## PART 7 - PROGRAMMING ASSIGNMENT
 Redo Part-6 using Aggregation Pipeline.
+
+Below is the maven code for:
+
+**Q.Number of times any webpage was visited by the same IP address**
+```
+package com.info7250.mongodb.assignment;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+import org.bson.Document;
+
+import com.mongodb.Block;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Accumulators;
+import com.mongodb.client.model.Aggregates;
+import com.mongodb.client.model.Sorts;
+
+public class INFO7250Assignment_2_6a_AGG implements Block<Document> {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+
+		// Establish connection using modern client
+				MongoClient client = MongoClients.create();
+				
+				// Connect to mongodb
+				MongoDatabase assignment_2 = client.getDatabase("logs");
+				
+				// Create/get collections
+				MongoCollection<Document>  coll = assignment_2.getCollection("access");
+							
+				// Define printBlock for each iterable
+				Block<Document> printBlock = new INFO7250Assignment_2_6a_AGG();
+				
+				// Define a pipeline for aggregation
+				//List<Document> aggregated = 
+				coll.aggregate(
+						Arrays.asList(
+								Aggregates.group("$ip_address",Accumulators.sum("times_vistited", 1)),
+								Aggregates.sort(Sorts.descending("times_vistited"))
+								)
+						).forEach(printBlock);
+						//.into(new ArrayList<>());
+				
+				//lab_2.getCollection("stock_avg_collection").insertMany(aggregated);
+				
+				// Close the connection
+				client.close();
+				
+	}
+
+	public void apply(Document t) {
+		// TODO Auto-generated method stub
+		System.out.println(t.toJson());
+	}
+
+
+}
+```
+
+To run the code:
+```
+cd ~
+cd INFO7250---Engineering-of-Big-Data-Systems/mongodb/
+mvn compile exec:java -Dexec.mainClass="com.info7250.mongodb.assignment.INFO7250Assignment_2_6a_AGG"
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_running_java_script.png?raw=true)
 
