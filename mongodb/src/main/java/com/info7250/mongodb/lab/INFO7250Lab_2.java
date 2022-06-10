@@ -1,4 +1,4 @@
-package com.info7250.mongodb.lab2;
+package com.info7250.mongodb.lab;
 
 import java.io.File;
 import java.io.FileNotFoundException;
