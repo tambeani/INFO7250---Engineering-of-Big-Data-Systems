@@ -349,6 +349,36 @@ Write a Java (could be a console app - will only run once to import the data int
 - Number of times any webpage was visited by the same IP address.
 - Number of times any webpage was visited each month.
 
+**Solution:**
+
+Download dataset:
+```
+cd ~
+curl -O https://raw.githubusercontent.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/main/dataset/access.log
+```
+
+Processing the data
+```
+cp access.log access.csv
+sed -i 's/ - - /,/g' access.csv
+sed -i 's/ -/-/g' access.csv
+sed -i 's/"//g' access.csv
+sed -i 's/ /,/g' access.csv
+```
+
+Adding headers
+```
+sed -i '1s/^/ip_address,time_stamp,request_type,url,protocol,response,response_time\n/' access.csv
+```
+
+Importing the dataset into mongodb:
+```
+/usr/bin/mongoimport --type csv --db logs --collection access --headerline ./access.csv
+```
+
+Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_access_logs_imported.png?raw=true)
+
+
 ## PART 7 - PROGRAMMING ASSIGNMENT
 Redo Part-6 using Aggregation Pipeline.
 
