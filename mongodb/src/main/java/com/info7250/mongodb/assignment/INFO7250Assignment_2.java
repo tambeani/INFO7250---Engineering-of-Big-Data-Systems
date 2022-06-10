@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 import org.bson.Document;
 
-import com.info7250.mongodb.lab.INFO7250Lab_2;
 import com.mongodb.Block;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -55,7 +54,7 @@ public class INFO7250Assignment_2 implements Block<Document> {
 
 	public void apply(Document t) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(t.toJson());
 	}
 
 
