@@ -99,7 +99,6 @@ public class INFO7250Lab_2 implements Block<Document> {
 		client.close();
 	}
 
-	@Override
 	public void apply(Document t) {
 		// TODO Auto-generated method stub
 		System.out.println(t.toJson());

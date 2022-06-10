@@ -378,6 +378,11 @@ Importing the dataset into mongodb:
 
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_access_logs_imported.png?raw=true)
 
+Clone the repository
+```
+cd ~
+git clone git@github.com:tambeani/INFO7250---Engineering-of-Big-Data-Systems.git
+```
 
 ## PART 7 - PROGRAMMING ASSIGNMENT
 Redo Part-6 using Aggregation Pipeline.

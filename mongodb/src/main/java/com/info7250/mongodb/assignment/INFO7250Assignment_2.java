@@ -53,11 +53,10 @@ public class INFO7250Assignment_2 implements Block<Document> {
 				
 	}
 
-	@Override
 	public void apply(Document t) {
 		// TODO Auto-generated method stub
-		System.out.println(t.toJson());
+		
 	}
-	
+
 
 }
