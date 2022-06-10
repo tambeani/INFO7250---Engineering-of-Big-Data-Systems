@@ -10,6 +10,8 @@ import java.util.Scanner;
 import org.bson.Document;
 
 import com.mongodb.Block;
+import com.mongodb.MapReduceCommand;
+import com.mongodb.client.MapReduceIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -53,7 +55,13 @@ public class INFO7250Assignment_2_6a_MR implements Block<Document> {
 							+ "}"
 						+ "}";
 				
-				coll.mapReduce(map, reduce);
+				// Execute map reduce
+				MapReduceIterable<Document> result = coll.mapReduce(map,reduce);
+				
+				// Print the map reduce result
+				for(Document doc:result) {
+					System.out.println(doc.toJson());
+				}
 				
 				// Close the connection
 				client.close();
