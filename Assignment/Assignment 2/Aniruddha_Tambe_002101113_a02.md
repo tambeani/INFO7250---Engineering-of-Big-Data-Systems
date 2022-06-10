@@ -474,11 +474,6 @@ db.access.find({}).forEach(
 
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_month_added.png?raw=true)
 
-
-Below is the maven code:
-```
-```
-
 ## PART 7 - PROGRAMMING ASSIGNMENT
 Redo Part-6 using Aggregation Pipeline.
 
@@ -558,3 +553,8 @@ mvn compile exec:java -Dexec.mainClass="com.info7250.mongodb.assignment.INFO7250
 
 Output:<br/>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a02_running_java_script.png?raw=true)
 
+Below is the maven code:
+
+**Q.Number of times any webpage was visited each month**
+```
+```
