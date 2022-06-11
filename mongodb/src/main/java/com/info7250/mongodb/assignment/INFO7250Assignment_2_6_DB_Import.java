@@ -35,7 +35,7 @@ public class INFO7250Assignment_2_6_DB_Import implements Block<Document> {
 		MongoCollection<Document>  access = logs.getCollection("access");
 		
 		// Importing the csv file
-		File fileOpen = new File(".","access.csv");
+		File fileOpen = new File("~","access.csv");
 		Scanner scanner = new Scanner(fileOpen);
 		
 		// Adding a new line to list documents
