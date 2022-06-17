@@ -21,6 +21,10 @@
 
 **Sharding with horizontal scaling** addresses the challenges of scaling to support high throughput and large data sets. Each shard(individual machine) handles fewer operations as the cluster grows. It also reduces the amount of data each shard stores. As the cluster grows, the data stored in each shard reduces.
 
+**Logical Diagram:**</br>![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_master_shards.png?raw=true)
+
+Each shard is an independent database, and collectively, the shards make up a **logical database**.
+
 ### Running queries with Sharding:
 
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_master.png?raw=true)
