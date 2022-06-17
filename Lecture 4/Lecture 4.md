@@ -27,7 +27,7 @@
 </p>
 
 
-Each shard is an independent database, and collectively, the shards make up a **logical database**.
+1. Each shard is an independent database, and collectively, the shards make up a **logical database**.
 
 ### Running queries with Sharding:
 
@@ -35,4 +35,62 @@ Each shard is an independent database, and collectively, the shards make up a **
 
 Here, we are trying to run a select query through multiple MySQL machines. To perform that, we need a MySQL master stores the metadata. The query is sent to the master database(machine) which stores row-level information in a lookup table(metadata).
 
+## Sharding in MongoDB:
+
+MongoDB supports sharding through the configuration of a sharded clusters. Below is the logical diagram of the sharded clusters,
+
+<p align="center">
+    <img src="https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_cluster_shards.png?raw=true" alt="Sublime's custom image"/>
+</p>
+
+Above diagram contains,
+1. Config servers
+2. App servers
+3. Shards
+
+
+Here, each shard is a physical database.
+
+
+Creating a replica set on the same machine:
+
+1. Create 2 additional copies of mongodb folders
+2. Navigate to bin folder & run terminal
+3. Run below command
+
+> mongod --replSet rs0 --port 27017 --bind_ip localhost --dbpath C:\data\db --oplogSize 128
+> mongod --replSet rs0 --port 27018 --bind_ip localhost --dbpath C:\data2\db --oplogSize 128
+> mongod --replSet rs0 --port 27019 --bind_ip localhost --dbpath C:\data3\db --oplogSize 128
+
+4. Create 3 seperate clients for connecting to above instances
+
+> mongo --port 27017
+> mongo --port 27018
+> mongo --port 27019
+
+5. Create a configuration script on the primary
+
+rsconf = {
+  _id: "rs0",
+  members: [
+    {
+     _id: 0,
+     host: "localhost:27017"
+    },
+    {
+     _id: 1,
+     host: "localhost:27018"
+    },
+    {
+     _id: 2,
+     host: "localhost:27019"
+    }
+   ]
+}
+
+In the above file we can make a member an arbiter or hidden based on our requirement.
+
+6. Run below command on 27017 client
+
+> rs.initiate(rsconf)
 
