@@ -37,19 +37,25 @@ Here, we are trying to run a select query through multiple MySQL machines. To pe
 
 ## Sharding in MongoDB:
 
-MongoDB supports sharding through the configuration of a sharded clusters. Below is the logical diagram of the sharded clusters,
+MongoDB supports sharding through the configuration of a sharded clusters. Below is the logical diagram of the shardeded clusters,
 
 <p align="center">
     <img src="https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_cluster_shards.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
 Above diagram contains,
-1. Config servers
-2. App servers
-3. Shards
+1. 3 Config servers
+2. 2 App servers
+3. 2 Shards
+
+**Config Servers**: They do not store any working data, but store metadata (i.e mapping of data to shards).
+
+**App Servers**(mongos): These are the shard servers also known as query routers. They primarily handle the read requests to the mongos servers by consulting with the config servers; this helps us locate the shard containing the working dataset. In other words it will route the query to the shard. 
+
+**Shard**: Each shard can be an individual mongod instance or a replica set. To provide high availability and data consistency, each shard is a replica set.
 
 
-Here, each shard is a physical database.
+Here, each shard is a physical database. To implement sharding we use the `mongos.exe` utility to start the **shard server.** Thus, we create multiple mongodb instances, alternatively we could also create replica sets and add them to the shard.  
 
 
 ### Creating a replica set on the same machine:
