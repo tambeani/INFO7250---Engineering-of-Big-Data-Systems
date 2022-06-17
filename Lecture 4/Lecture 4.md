@@ -52,7 +52,7 @@ Above diagram contains,
 Here, each shard is a physical database.
 
 
-Creating a replica set on the same machine:
+### Creating a replica set on the same machine:
 
 1. Create 2 additional copies of mongodb folders
 2. Navigate to bin folder & run terminal
