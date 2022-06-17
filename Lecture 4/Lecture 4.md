@@ -58,19 +58,19 @@ Creating a replica set on the same machine:
 2. Navigate to bin folder & run terminal
 3. Run below command
 
-> mongod --replSet rs0 --port 27017 --bind_ip localhost --dbpath C:\data\db --oplogSize 128
-
-> mongod --replSet rs0 --port 27018 --bind_ip localhost --dbpath C:\data2\db --oplogSize 128
-
-> mongod --replSet rs0 --port 27019 --bind_ip localhost --dbpath C:\data3\db --oplogSize 128
+```
+mongod --replSet rs0 --port 27017 --bind_ip localhost --dbpath C:\data\db --oplogSize 128
+mongod --replSet rs0 --port 27018 --bind_ip localhost --dbpath C:\data2\db --oplogSize 128
+mongod --replSet rs0 --port 27019 --bind_ip localhost --dbpath C:\data3\db --oplogSize 128
+```
 
 4. Create 3 seperate clients for connecting to above instances
 
-> mongo --port 27017
-
-> mongo --port 27018
-
-> mongo --port 27019
+```
+mongo --port 27017
+mongo --port 27018
+mongo --port 27019
+```
 
 5. Create a configuration script on the primary
 
@@ -97,5 +97,7 @@ In the above file we can make a member an arbiter or hidden based on our require
 
 6. Run below command on 27017 client
 
-> rs.initiate(rsconf)
+```
+rs.initiate(rsconf)
+```
 
