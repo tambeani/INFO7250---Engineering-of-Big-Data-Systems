@@ -48,14 +48,35 @@ Above diagram contains,
 2. 2 App servers
 3. 2 Shards
 
-**Config Servers**: They do not store any working data, but store metadata (i.e mapping of data to shards).
+**Config Servers**: They do not store any working data, but store metadata (i.e mapping of cluster's data set to shards).
 
-**App Servers**(mongos): These are the shard servers also known as query routers. They primarily handle the read requests to the mongos servers by consulting with the config servers; this helps us locate the shard containing the working dataset. In other words it will route the query to the shard. 
+**App Servers**(mongos): These are the shard servers also known as query routers. They act as interface between the client applications and appropriate shard(s). They primarily handle the incoming read requests directed to the sharded cluster. They consult the config servers to target the operation to the appropriate shard. In other words it will route the query to the correct shard. 
 
 **Shard**: Each shard can be an individual mongod instance or a replica set. To provide high availability and data consistency, each shard is a replica set.
 
 
 Here, each shard is a physical database. To implement sharding we use the `mongos.exe` utility to start the **shard server.** Thus, we create multiple mongodb instances, alternatively we could also create replica sets and add them to the shard.  
+
+### Data distribution in MongoDB:
+
+1. MongoDB distributes the data at a collection level
+2. Sharding partitions a collection's data by the shard key
+
+### Shard Key:
+
+To shard a collection we use a shard key. It is either an indexed field or an indexed compound field that exists in every document in the collection. MongoDB divides the shard key into chunks and distributes the chunks/blocks evenly across the shards. 
+
+To divide the shard key, MongoDB uses either
+1. range based partitioning - creating non-overlapping chunks on a number line based on a numeric key
+
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_range_based_partitioning.png?raw=true)
+
+2. hash based partitioning - computes hash of a field's value, and then uses these hashes to create chunks
+
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_hash_based_partitioning.png?raw=true)
+
+
+
 
 
 ### Creating a replica set on the same machine:
