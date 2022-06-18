@@ -67,18 +67,21 @@ Here, each shard is a physical database. To implement sharding we use the `mongo
 To shard a collection we use a shard key. It is either an indexed field or an indexed compound field that exists in every document in the collection. MongoDB divides the shard key into chunks and distributes the chunks/blocks evenly across the shards. 
 
 To divide the shard key, MongoDB uses either
-1. range based partitioning - creating non-overlapping chunks on a number line based on a numeric key
+1. range based partitioning -> creating non-overlapping chunks on a number line based on a numeric key
 
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_range_based_partitioning.png?raw=true)
 
-2. hash based partitioning - computes hash of a field's value, and then uses these hashes to create chunks
+2. hash based partitioning -> computes hash of a field's value, and then uses these hashes to create chunks
 
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_hash_based_partitioning.png?raw=true)
 
+This type of partitioning ensures a more random distribution in the cluster.
 
+### Maintaining a balanced data distribution:
 
-
-
+Addition or removal of shards within the cluster can give rise to an imbalance. MongoDB ensures this balance by 2 background processes,
+- splitting -> splits chunks in half if threshold for max size is crossed
+- balancer -> migrates chunks to other shards when threshold for migration is crossed
 ### Creating a replica set on the same machine:
 
 1. Create 2 additional copies of mongodb folders
@@ -127,4 +130,44 @@ In the above file we can make a member an arbiter or hidden based on our require
 ```
 rs.initiate(rsconf)
 ```
+
+
+## Hadoop
+
+**Hadoop is not a database, it is an ecosystem (framework).**
+
+It has the following module:
+1. Hadoop common:</br></br>Provides common utilities that supports other Hadoop modules
+2. Hadoop Distributed File System:</br></br>A distributed file system that provides high-throughput access to application data 
+3. Hadoop YARN(yet another resource negotiator):</br></br>Its a resource manager for job scheduling and cluster resource management
+4. Hadoop MapReduce:</br></br>A YARN-based system for parallel processing of large-dataset
+
+### Hadoop as an ecosystem:
+
+<p align="center">
+    <img src="https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_hadoop_ecosystem.png?raw=true" alt="Sublime's custom image"/>
+</p>
+
+### HDFS:
+
+The distributed file system consists of numerous underlying physical machines also known as **datanodes** (w/ individual file systems) which are complimented by a single logical machine also known as **namenode** (w/ distributed file system) accessible to the end-user. 
+
+One can assume Hadoop's HDFS as an operating system which enables us access to files and directories. Like an OS, we can install MySQL or any other database(Hbase can be ran on Hadoop). It also enables us to run distributed file system on commodity hardware.
+
+Salient features:
+1. High fault-tolerance
+2. Designed to be deployed on low-cost hardware
+3. Provides high throughput access to application data
+
+### Pre-requisites for Hadoop:
+
+1. Unix kernel (Linux)
+2. Java
+3. SSH (password-less)
+
+### HDFS architecture
+
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/lec04_hdfs_architecture.png?raw=true)
+
+
 
