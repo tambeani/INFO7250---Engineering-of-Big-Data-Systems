@@ -41,3 +41,20 @@ db.stats();
 
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexes.png?raw=true)
+
+## PART 4 - MongoDB Indexing
+
+1. Importing the dataset in another database
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_imported_data.png?raw=true)
+
+2. Creating an index on this database
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexe_after.png?raw=true)
+
+3. Checking for created index
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexe_after_stats.png?raw=true)
