@@ -31,3 +31,13 @@ mongoimport --type csv --db nyse_a03_db --collection nyse_a03_coll --headerline 
 
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_importing_dataset.png?raw=true)
+
+4. Check for created indexes
+
+'''
+use nyse_a03_db
+db.stats();
+'''
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexes.png?raw=true)
