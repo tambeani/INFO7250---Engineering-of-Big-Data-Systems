@@ -163,6 +163,19 @@ Here, the query fetches the matched indexes ( viz all the old outdoor instances)
 
 > Positional operator: $
 
+Exercise 7: Add helpful reviews to the document.
+```
+db.reviews.update(
+    {_id: ObjectId("4c4b1476238d3b4dd5000041")},
+    { $push : 
+        {
+            voter_ids: ObjectId("4c4b1476238d3b4dd5000001")
+        },
+        $inc : { helpful_votes : 1}
+    }
+);
+```
+
 | Operators   | Description |
 | ----------- | ----------- |
 | $set      | Title       |

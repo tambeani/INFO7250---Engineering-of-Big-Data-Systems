@@ -1,7 +1,13 @@
 ## Lecture 5 - Hadoop & MapReduce
 
 Hadoop is a framework written in Java for running applications on large clusters of commodity hardware and incorporates features similar to those of Google File system and of MapReduce computing paradigm.
- 
+
+Hadoop's HDFS is a highly fault-tolerant distributed file system and, like Hadoop in general, designed to be deployed on low-cost hardware. 
+
+### HDFS 
+
+The hadoop distribution file system is a distribution file system designed to run on commodity hardware. It has similarity to other dfs.
+
 ### Hadoop Server roles:
 
 A Client either requests for 
