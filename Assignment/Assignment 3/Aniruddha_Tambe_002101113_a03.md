@@ -59,6 +59,31 @@ Output:<br/>
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexe_after_stats.png?raw=true)
 
+## PART 5 - MongoDB Text search (refer to chapter 9).
+
+### Q. Write and execute one query to perform each of the followings on any collection of your choice.
+
+1. Specify and word matches instead of or word matches.
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_word_match.png?raw=true)
+
+2. Perform exact phrase matches.
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_exact_phrase_match.png?raw=true)
+
+3. Exclude documents with certain words.
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_word_match_certain.png?raw=true)
+
+4. Exclude documents with certain phrases.
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_word_match_certain_phrases.png?raw=true)
+
+
 ## PART 7 - HDFS Command Assignment
 
 Code:
