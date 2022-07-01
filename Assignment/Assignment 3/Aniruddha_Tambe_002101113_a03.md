@@ -1,4 +1,4 @@
-## PART 3 - MongoDB indexing
+mongo## PART 3 - MongoDB indexing
 
 1. Creating the NYSE dataset
 
@@ -36,7 +36,7 @@ Output:<br/>
 
 ```
 use nyse_a03_db
-db.stats();
+db.nyse_a03_coll.getIndexes();
 ```
 
 Output:<br/>
@@ -58,3 +58,5 @@ Output:<br/>
 
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexe_after_stats.png?raw=true)
+
+

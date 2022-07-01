@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.hadoop</groupId>
+  <artifactId>info7250</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Hadoop maven project for INFO7250 course</name>
+  <description>This project contains the hadoop-based assignment for course INFO7250</description>
+    <properties>
+     <maven.compiler.source>1.8</maven.compiler.source>
+     <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  <dependencies>
+	<!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-core -->
+	<!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-core -->
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-core</artifactId>
+    <version>0.20.2</version>
+</dependency>
+
+  </dependencies>
+</project>
