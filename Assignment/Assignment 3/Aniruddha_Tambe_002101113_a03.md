@@ -83,6 +83,252 @@ Output:<br/>
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_word_match_certain_phrases.png?raw=true)
 
+## PART 6 - Programming Assignment
+
+1. checksum
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_1.png?raw=true)
+
+2. help
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_2.png?raw=true)
+
+3. ls
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_3.png?raw=true)
+
+4. mkdir
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_4.png?raw=true)
+
+5. count
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_5.png?raw=true)
+
+6. touchz
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_6.png?raw=true)
+
+7. cat
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_7.png?raw=true)
+
+8. cp
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_8.png?raw=true)
+
+9. rm
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_9.png?raw=true)
+
+10. mv
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_10.png?raw=true)
+
+11. du
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_11.png?raw=true)
+
+12. dus
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_12.png?raw=true)
+
+13. stat
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_13.png?raw=true)
+
+14. setrep
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_14.png?raw=true)
+
+15. copyFromLocal
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_15.png?raw=true)
+
+16. moveFromLocal
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_16.png?raw=true)
+
+17. moveToLocal
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_17.png?raw=true)
+
+Definition: The Hadoop fs shell command moveToLocal moves the file or directory from the Hadoop filesystem to the destination in the local filesystem.
+
+18. -ls -R 
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_18.png?raw=true)
+
+19. df
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_19.png?raw=true)
+
+20. get
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_20.png?raw=true)
+
+21. expunge
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_21.png?raw=true)
+
+22. chmod
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_22.png?raw=true)
+
+23. usage
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_23.png?raw=true)
+
+24. tail
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_24.png?raw=true)
+
+25. head
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_25.png?raw=true)
+
+Displays first kilobyte of the file to stdout.
+
+26. rmdir
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_26.png?raw=true)
+
+27. rm -r
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_27.png?raw=true)
+
+28. rm -r
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_28.png?raw=true)
+
+29. cp
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_29.png?raw=true)
+
+30. test
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_30.png?raw=true)
+
+31. appendToFile
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_31.png?raw=true)
+
+32. getMerge
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_32.png?raw=true)
+
+33. text
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_33.png?raw=true)
+
+34. getfacl
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_34.png?raw=true)
+
+35. put
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_35.png?raw=true)
+
+36. getfattr
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_36.png?raw=true)
+
+37. find
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_37.png?raw=true)
+
+38. chgrp
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_38.png?raw=true)
+
+39. chown
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_39.png?raw=true)
+
+40. setfacl
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_40.png?raw=true)
+
+Usage: hadoop fs -setfacl [-R] [-b |-k -m |-x <acl_spec> <path>] |[--set <acl_spec> <path>]
+
+41. setfattr
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_41.png?raw=true)
+
+42. touch
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_42.png?raw=true)
+
+Updates the access and modification times of the file specified by the URI to the current time. If the file does not exist, then a zero length file is created at URI with current time as the timestamp of that URI.
+
+43. chgrp
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_43.png?raw=true)
+
+44. concat
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_44.png?raw=true)
+
+Concatenate existing source files into the target file. Target file and source files should be in the same directory.
+
+45. createSnapshot
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_45.png?raw=true)
+
+46. renameSnapshot
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_46.png?raw=true)
+
+47. deleteSnapshot
+
+Output:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_47.png?raw=true)
 
 ## PART 7 - HDFS Command Assignment
 
