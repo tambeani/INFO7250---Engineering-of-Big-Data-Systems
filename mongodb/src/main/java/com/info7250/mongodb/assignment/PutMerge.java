@@ -14,10 +14,11 @@ public static void main(String[] args) throws IOException {
 
     Configuration conf = new Configuration();
     FileSystem hdfs = FileSystem.get(conf);
+    //FileSystem hdfs = FileSystem.get(new URI("hdfs://localhost:9000"),conf)
     FileSystem local = FileSystem.getLocal(conf);
 
     Path inputDir = new Path("/home/aniruddha/Downloads/nyse/NYSE");
-    Path hdfsFile = new Path("hdfs://localhost:9000/nyse");
+    Path hdfsFile = new Path("hdfs://localhost:9000");
 
     //System.out.println(inputDir);
     //System.out.println(hdfsFile);
