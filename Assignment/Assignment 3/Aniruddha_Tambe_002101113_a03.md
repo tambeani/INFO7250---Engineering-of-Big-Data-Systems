@@ -1,4 +1,4 @@
-mongo## PART 3 - MongoDB indexing
+## PART 3 - MongoDB indexing
 
 1. Creating the NYSE dataset
 
