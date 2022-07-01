@@ -18,7 +18,7 @@ public static void main(String[] args) throws IOException {
     FileSystem local = FileSystem.getLocal(conf);
 
     Path inputDir = new Path("/home/aniruddha/Downloads/nyse/NYSE");
-    Path hdfsFile = new Path("hdfs://localhost:9000");
+    Path hdfsFile = new Path("hdfs://localhost:9000/nyse");
 
     //System.out.println(inputDir);
     //System.out.println(hdfsFile);
