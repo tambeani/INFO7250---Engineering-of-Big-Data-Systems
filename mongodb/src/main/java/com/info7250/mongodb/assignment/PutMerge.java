@@ -46,7 +46,7 @@ public static void main(String[] args) throws IOException, URISyntaxException {
             in.close();
         }
         out.close();
-    } catch (IOException e) {
+    } catch (Exception e) {
         //e.printStackTrace();
 
     }
