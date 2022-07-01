@@ -20,8 +20,8 @@ public static void main(String[] args) throws IOException, URISyntaxException {
     //FileSystem hdfs = FileSystem.get(new URI("hdfs://localhost:9000"),conf)
     FileSystem local = FileSystem.getLocal(conf);
 
-    Path inputDir = new Path("/home/aniruddha/Downloads/nyse/NYSE/");
-    Path hdfsFile = new Path("/nyse");
+    Path inputDir = new Path("/home/aniruddha/Downloads/nyse/NYSE/NYSE_daily_prices_0.csv");
+    Path hdfsFile = new Path("/nyse/NYSE_daily_prices_0.csv");
     
     //FileSystem fs = FileSystem.get(new URI(<url:port>), configuration);
     //Path filePath = new Path(<path/to/file>);
