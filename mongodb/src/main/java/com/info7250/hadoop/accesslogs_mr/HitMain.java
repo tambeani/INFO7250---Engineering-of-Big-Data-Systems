@@ -36,7 +36,7 @@ public class HitMain {
         
         
         FileInputFormat.addInputPath(job, new Path("/logs/access.log"));
-        FileOutputFormat.setOutputPath(job, new Path("/"));
+        FileOutputFormat.setOutputPath(job, new Path("/output"));
         
         job.setJobName("myjob");
         
