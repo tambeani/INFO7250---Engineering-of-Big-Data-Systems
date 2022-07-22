@@ -46,6 +46,7 @@ public class WordCountMapper extends Mapper<LongWritable,Text,Text,IntWritable> 
 		ipaddress.set(tokens[0]);
 		
 		context.write(ipaddress, one);
+		System.out.println(ipaddress+ " -- " + one);
 		//context gives output key and value
 	}
 }
