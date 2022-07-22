@@ -11,20 +11,16 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-import com.info7250.hadoop.mrwordcount.WordCountMain;
-import com.info7250.hadoop.mrwordcount.WordCountMapper;
-import com.info7250.hadoop.mrwordcount.WordCountReducer;
-
 public class HitMain {
 	
 	public static void main(String args[]) throws IllegalArgumentException, IOException, ClassNotFoundException, InterruptedException {
 		
 		Job job = Job.getInstance();
-        job.setJarByClass(WordCountMain.class);
+        job.setJarByClass(HitMain.class);
         
         // Specify various job-specific parameters     
-        job.setMapperClass(WordCountMapper.class);
-        job.setReducerClass(WordCountReducer.class);
+        job.setMapperClass(HitCounter.class);
+        job.setReducerClass(HitReducer.class);
         
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
