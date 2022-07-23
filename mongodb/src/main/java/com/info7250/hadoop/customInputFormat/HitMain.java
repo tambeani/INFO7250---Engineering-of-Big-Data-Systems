@@ -41,7 +41,7 @@ public class HitMain {
 		        
         //************************ KeyValueTextInputFormat *****************
         
-		/*Configuration conf = new Configuration();
+		Configuration conf = new Configuration();
 		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
 
 		Job job = new Job(conf);
@@ -52,11 +52,11 @@ public class HitMain {
         job.setMapperClass(HitCounter.class);
         job.setReducerClass(HitReducer.class);
 		
-		//job.setInputFormatClass(KeyValueTextInputFormat.class);*/
+		job.setInputFormatClass(KeyValueTextInputFormat.class);
         
         //************************ NLineInputFormat ************************
         
-        Configuration conf = new Configuration();
+        /*Configuration conf = new Configuration();
 		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
 		
 		Job job = new Job(conf);
@@ -68,7 +68,7 @@ public class HitMain {
         job.setMapperClass(HitCounter.class);
         job.setReducerClass(HitReducer.class);
 
-        job.setInputFormatClass(NLineInputFormat.class);
+        job.setInputFormatClass(NLineInputFormat.class);*/
 		
 		//********************* CombineTextInputFormat **********************
 		/*Configuration conf = new Configuration();
