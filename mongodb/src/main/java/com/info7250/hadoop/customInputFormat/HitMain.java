@@ -24,7 +24,7 @@ public class HitMain {
 		Configuration conf = new Configuration();
 		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
 		//conf.setInt(FixedLengthInputFormat.FIXED_RECORD_LENGTH, 11);
-		conf.setInt("fixedlengthinputformat.record.length",11);
+		conf.setInt("fixedlengthinputformat.record.length",8);
 		
 		Job job = new Job(conf);
 		//Job job = Job.getInstance();
