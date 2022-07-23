@@ -29,8 +29,8 @@ public class HitMain {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
         
-        FileInputFormat.addInputPath(job, new Path("/logs/access.log"));
-        FileOutputFormat.setOutputPath(job, new Path("/output"));
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
         
         job.setJobName("myjob");
         
