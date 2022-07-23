@@ -7,12 +7,14 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class HitCounter extends Mapper<Text,Text,Text,IntWritable>{
+//public class HitCounter extends Mapper<Text,Text,Text,IntWritable>{ //- KeyValueTextInputFormat 
+public class HitCounter extends Mapper<LongWritable,Text,Text,IntWritable>{ //- NLineInputFormat
 	
 	private final static IntWritable one = new IntWritable(1);
 	private Text ipaddress = new Text();
 	
-	public void map(Text key, Text value, org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException, InterruptedException {
+	//public void map(Text key, Text value, org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException, InterruptedException { //- KeyValueTextInputFormat
+	public void map(LongWritable key, Text value, org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException, InterruptedException { //- NLineInputFormat
 			
 			String line=value.toString();
 			
