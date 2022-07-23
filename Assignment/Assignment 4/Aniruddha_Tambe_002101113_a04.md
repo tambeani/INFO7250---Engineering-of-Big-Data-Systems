@@ -110,16 +110,6 @@ public class HitMain {
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_2_cmb.png?raw=true)
 
-2. Creating an index on this database
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexe_after.png?raw=true)
-
-3. Checking for created index
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexe_after_stats.png?raw=true)
-
 ## PART 5 - MongoDB Text search (refer to chapter 9).
 
 ### Q. Write and execute one query to perform each of the followings on any collection of your choice.
