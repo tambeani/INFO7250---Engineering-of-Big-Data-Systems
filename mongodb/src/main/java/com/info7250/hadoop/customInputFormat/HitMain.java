@@ -33,6 +33,8 @@ public class HitMain {
         job.setReducerClass(HitReducer.class);
 		
 		job.setInputFormatClass(FixedLengthInputFormat.class);
+		FixedLengthInputFormat.setRecordLength(conf, 100);
+
 		        
         //************************ KeyValueTextInputFormat *****************
         
