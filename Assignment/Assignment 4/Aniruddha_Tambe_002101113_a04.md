@@ -361,9 +361,11 @@ Output for NLineInputFormat:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_4_nline.png?raw=true)
 
 Output for KeyValueTextInputFormat:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_4_nline.png?raw=true)
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_4_kv.png?raw=true)
 
 Output for TextInputFormat:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_2_cmb.png?raw=true)
+
+
 
 
