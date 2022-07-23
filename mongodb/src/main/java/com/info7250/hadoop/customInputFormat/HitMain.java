@@ -58,9 +58,9 @@ public class HitMain {
         
         Configuration conf = new Configuration();
 		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
-
-		//Job job = new Job(conf);
-		Job job = Job.getInstance();
+		
+		Job job = new Job(conf);
+		//Job job = Job.getInstance();
 		job.getConfiguration().setInt("mapreduce.input.lineinputformat.linespermap", 4);
         job.setJarByClass(HitMain.class);
         
