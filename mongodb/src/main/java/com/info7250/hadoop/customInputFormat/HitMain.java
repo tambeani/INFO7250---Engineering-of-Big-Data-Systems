@@ -23,6 +23,7 @@ public class HitMain {
         
 		Configuration conf = new Configuration();
 		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
+		conf.setInt(FixedLengthInputFormat.FIXED_RECORD_LENGTH, 10000);
 
 		Job job = new Job(conf);
 		//Job job = Job.getInstance();
@@ -31,7 +32,7 @@ public class HitMain {
         // Specify various job-specific parameters  
         job.setMapperClass(HitCounter.class);
         job.setReducerClass(HitReducer.class);
-        conf.setInt(FixedLengthInputFormat.FIXED_RECORD_LENGTH, 10000);
+        
 		job.setInputFormatClass(FixedLengthInputFormat.class);
 		//FixedLengthInputFormat.setRecordLength(conf, 100);
 
