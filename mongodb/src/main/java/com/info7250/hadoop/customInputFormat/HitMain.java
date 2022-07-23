@@ -21,10 +21,8 @@ public class HitMain {
 		Configuration conf = new Configuration();
 		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
 
-		Job job = new Job(conf);
-		
-		//
-		//Job job = Job.getInstance();
+		//Job job = new Job(conf);
+		Job job = Job.getInstance();
         job.setJarByClass(HitMain.class);
         
         // Specify various job-specific parameters  
