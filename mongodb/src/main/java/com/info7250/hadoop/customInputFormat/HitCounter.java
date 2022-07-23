@@ -12,7 +12,7 @@ public class HitCounter extends Mapper<Text,Text,Text,IntWritable>{
 	private final static IntWritable one = new IntWritable(1);
 	private Text ipaddress = new Text();
 	
-	public void map(LongWritable key, Text value, org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException, InterruptedException {
+	public void map(Text key, Text value, org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException, InterruptedException {
 			
 			String line=value.toString();
 			
