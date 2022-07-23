@@ -33,11 +33,8 @@ public class WordCountMain
          job.setInputFormatClass(TextInputFormat.class);
          job.setOutputFormatClass(TextOutputFormat.class);
          
-         
          job.setOutputKeyClass(Text.class);
          job.setOutputValueClass(IntWritable.class);
-         
-         
          
          FileInputFormat.addInputPath(job, new Path(args[0]));
          FileOutputFormat.setOutputPath(job, new Path(args[1]));
