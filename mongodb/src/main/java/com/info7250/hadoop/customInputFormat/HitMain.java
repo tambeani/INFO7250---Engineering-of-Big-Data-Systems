@@ -41,7 +41,7 @@ public class HitMain {
 		//conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
 
 		//Job job = new Job(conf);
-		Job job = Job.getInstance();
+		/*Job job = Job.getInstance();
 		job.getConfiguration().setInt("mapreduce.input.lineinputformat.linespermap", 4);
         job.setJarByClass(HitMain.class);
         
@@ -49,7 +49,24 @@ public class HitMain {
         job.setMapperClass(HitCounter.class);
         job.setReducerClass(HitReducer.class);
 
-        job.setInputFormatClass(NLineInputFormat.class);
+        job.setInputFormatClass(NLineInputFormat.class);*/
+		
+		//********************* CombineTextInputFormat **********************
+		Configuration conf = new Configuration();
+        conf.set("mapred.textoutputformat.separator", ",");
+        conf.set("mapred.max.split.size", "16777216");
+        
+        Job job = new Job(conf);
+        job.getConfiguration().setLong("mapreduce.input.fileinputformat.split.maxsize", (long)(256*1024*1024));
+
+        job.setJarByClass(HitMain.class);
+        job.setMapperClass(HitCounter.class);
+        job.setReducerClass(HitReducer.class);
+        
+        job.setInputFormatClass(CombinedMyFormat.class);
+        CombinedMyFormat.setMaxInputSplitSize(job, 16777216);
+        
+        // *************************************************
         job.setOutputFormatClass(TextOutputFormat.class);
         
         job.setOutputKeyClass(Text.class);
