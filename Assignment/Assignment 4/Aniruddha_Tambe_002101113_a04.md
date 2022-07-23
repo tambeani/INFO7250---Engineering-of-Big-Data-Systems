@@ -108,343 +108,254 @@ public class HitMain {
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_2_cmb.png?raw=true)
 
-## PART 5 - MongoDB Text search (refer to chapter 9).
+## PART 4 – Programming Assignment
 
-### Q. Write and execute one query to perform each of the followings on any collection of your choice.
+#### CombineFileInputFormat, FixedLengthInputFormat, KeyValueTextInputFormat, NLineInputFormat & TextInputFormat
 
-1. Specify and word matches instead of or word matches.
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_word_match.png?raw=true)
-
-2. Perform exact phrase matches.
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_exact_phrase_match.png?raw=true)
-
-3. Exclude documents with certain words.
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_word_match_certain.png?raw=true)
-
-4. Exclude documents with certain phrases.
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_word_match_certain_phrases.png?raw=true)
-
-## PART 6 - Programming Assignment
-
-1. checksum
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_1.png?raw=true)
-
-2. help
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_2.png?raw=true)
-
-3. ls
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_3.png?raw=true)
-
-4. mkdir
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_4.png?raw=true)
-
-5. count
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_5.png?raw=true)
-
-6. touchz
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_6.png?raw=true)
-
-7. cat
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_7.png?raw=true)
-
-8. cp
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_8.png?raw=true)
-
-9. rm
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_9.png?raw=true)
-
-10. mv
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_10.png?raw=true)
-
-11. du
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_11.png?raw=true)
-
-12. dus
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_12.png?raw=true)
-
-13. stat
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_13.png?raw=true)
-
-14. setrep
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_14.png?raw=true)
-
-15. copyFromLocal
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_15.png?raw=true)
-
-16. moveFromLocal
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_16.png?raw=true)
-
-17. moveToLocal
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_17.png?raw=true)
-
-Definition: The Hadoop fs shell command moveToLocal moves the file or directory from the Hadoop filesystem to the destination in the local filesystem.
-
-18. -ls -R 
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_18.png?raw=true)
-
-19. df
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_19.png?raw=true)
-
-20. get
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_20.png?raw=true)
-
-21. expunge
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_21.png?raw=true)
-
-22. chmod
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_22.png?raw=true)
-
-23. usage
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_23.png?raw=true)
-
-24. tail
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_24.png?raw=true)
-
-25. head
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_25.png?raw=true)
-
-Displays first kilobyte of the file to stdout.
-
-26. rmdir
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_26.png?raw=true)
-
-27. rm -r
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_27.png?raw=true)
-
-28. rm -r
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_28.png?raw=true)
-
-29. cp
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_29.png?raw=true)
-
-30. test
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_30.png?raw=true)
-
-31. appendToFile
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_31.png?raw=true)
-
-32. getMerge
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_32.png?raw=true)
-
-33. text
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_33.png?raw=true)
-
-34. getfacl
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_34.png?raw=true)
-
-35. put
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_35.png?raw=true)
-
-36. getfattr
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_36.png?raw=true)
-
-37. find
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_37.png?raw=true)
-
-38. chgrp
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_38.png?raw=true)
-
-39. chown
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_39.png?raw=true)
-
-40. setfacl
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_40.png?raw=true)
-
-Usage: hadoop fs -setfacl [-R] [-b |-k -m |-x <acl_spec> <path>] |[--set <acl_spec> <path>]
-
-41. setfattr
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_41.png?raw=true)
-
-42. touch
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_42.png?raw=true)
-
-Updates the access and modification times of the file specified by the URI to the current time. If the file does not exist, then a zero length file is created at URI with current time as the timestamp of that URI.
-
-43. chgrp
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_43.png?raw=true)
-
-44. concat
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_44.png?raw=true)
-
-Concatenate existing source files into the target file. Target file and source files should be in the same directory.
-
-45. createSnapshot
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_45.png?raw=true)
-
-46. renameSnapshot
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_46.png?raw=true)
-
-47. deleteSnapshot
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_47.png?raw=true)
-
-## PART 7 - HDFS Command Assignment
-
-Code:
-
+**Code for Combined My Format:**
 ```
-package com.info7250.mongodb.assignment;
+package com.info7250.hadoop.customInputFormat;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.InputSplit;
+import org.apache.hadoop.mapreduce.RecordReader;
+import org.apache.hadoop.mapreduce.TaskAttemptContext;
+import org.apache.hadoop.mapreduce.lib.input.CombineFileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.CombineFileRecordReader;
+import org.apache.hadoop.mapreduce.lib.input.CombineFileRecordReaderWrapper;
+import org.apache.hadoop.mapreduce.lib.input.CombineFileSplit;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+import org.apache.hadoop.mapreduce.lib.input.LineRecordReader;
+
+public class CombinedMyFormat extends CombineFileInputFormat<LongWritable,Text>{
+
+	/*private static class CombineMyKeyMyValueReaderWrapper
+    extends CombineFileRecordReaderWrapper< Text, Text > {
+        protected CombineMyKeyMyValueReaderWrapper(
+            CombineFileSplit split, TaskAttemptContext ctx, Integer idx
+        ) throws IOException, InterruptedException {
+            super( new CombinedMyFormat(), split, ctx, idx );
+        }
+    }
+	
+	@Override
+	public RecordReader<Text, Text> createRecordReader(InputSplit split, TaskAttemptContext ctx)
+			throws IOException {
+		// TODO Auto-generated method stub
+		return new CombineFileRecordReader< Text, Text >(
+	            ( CombineFileSplit )split, ctx, CombineMyKeyMyValueReaderWrapper.class);
+	}*/
+	
+	@Override
+    public RecordReader<LongWritable, Text>
+            createRecordReader(InputSplit split, TaskAttemptContext context)
+                    throws IOException {
+
+        CombineFileRecordReader<LongWritable, Text> reader = 
+                new CombineFileRecordReader<LongWritable, Text>(
+                        (CombineFileSplit) split, context, myCombineFileRecordReader.class);        
+        return reader;
+    }
+
+    public static class myCombineFileRecordReader extends RecordReader<LongWritable, Text> {
+        private LineRecordReader lineRecordReader = new LineRecordReader();
+
+        public myCombineFileRecordReader(CombineFileSplit split, 
+                TaskAttemptContext context, Integer index) throws IOException {
+
+            FileSplit fileSplit = new FileSplit(split.getPath(index), 
+                                                split.getOffset(index),
+                                                split.getLength(index), 
+                                                split.getLocations());
+            lineRecordReader.initialize(fileSplit, context);
+        }
+
+        @Override
+        public void initialize(InputSplit inputSplit, TaskAttemptContext context)
+                throws IOException, InterruptedException {
+            //linerecordReader.initialize(inputSplit, context);
+        }
+
+        @Override
+        public void close() throws IOException {
+            lineRecordReader.close();
+        }
+
+        @Override
+        public float getProgress() throws IOException {
+            return lineRecordReader.getProgress();
+        }
+
+        @Override
+        public LongWritable getCurrentKey() throws IOException,
+                InterruptedException {
+            return lineRecordReader.getCurrentKey();
+        }
+
+        @Override
+        public Text getCurrentValue() throws IOException, InterruptedException {
+            return lineRecordReader.getCurrentValue();
+        }
+
+        @Override
+        public boolean nextKeyValue() throws IOException, InterruptedException {
+            return lineRecordReader.nextKeyValue();
+        }        
+    }
+
+}
+```
+
+**Code for driver class:**
+```
+package com.info7250.hadoop.customInputFormat;
+
+import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSDataInputStream;
-import org.apache.hadoop.fs.FSDataOutputStream;
-import org.apache.hadoop.fs.FileStatus;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FixedLengthInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.NLineInputFormat;
+//import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-public class PutMerge {
+public class HitMain {
+	
+	public static void main(String args[]) throws IllegalArgumentException, IOException, ClassNotFoundException, InterruptedException {
+		
+        //************************ FixedLengthInputFormat *****************
+        
+		Configuration conf = new Configuration();
+		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
+		//conf.setInt(FixedLengthInputFormat.FIXED_RECORD_LENGTH, 11);
+		conf.setInt("fixedlengthinputformat.record.length",8);
+		
+		Job job = new Job(conf);
+		//Job job = Job.getInstance();
+        job.setJarByClass(HitMain.class);
+        
+        // Specify various job-specific parameters  
+        job.setMapperClass(HitCounter.class);
+        job.setReducerClass(HitReducer.class);
+        
+		job.setInputFormatClass(FixedLengthInputFormat.class);
+		//FixedLengthInputFormat.setRecordLength(conf, 100);
 
-public static void main(String[] args) throws IOException, URISyntaxException {
+		        
+        //************************ KeyValueTextInputFormat *****************
+        
+		/*Configuration conf = new Configuration();
+		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
 
-    Configuration conf = new Configuration();
-    FileSystem hdfs = FileSystem.get(new URI("hdfs://localhost:9000"),conf);
-    //FileSystem hdfs = FileSystem.get(new URI("hdfs://localhost:9000"),conf)
-    FileSystem local = FileSystem.getLocal(conf);
+		Job job = new Job(conf);
+		//Job job = Job.getInstance();
+        job.setJarByClass(HitMain.class);
+        
+        // Specify various job-specific parameters  
+        job.setMapperClass(HitCounter.class);
+        job.setReducerClass(HitReducer.class);
+		
+		//job.setInputFormatClass(KeyValueTextInputFormat.class);*/
+        
+        //************************ NLineInputFormat ************************
+        
+        //Configuration conf = new Configuration();
+		//conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
 
-    Path inputDir = new Path("/home/aniruddha/Downloads/nyse/NYSE/");
-    Path hdfsFile = new Path("/nyse/");
-    
-    //FileSystem fs = FileSystem.get(new URI(<url:port>), configuration);
-    //Path filePath = new Path(<path/to/file>);
+		//Job job = new Job(conf);
+		/*Job job = Job.getInstance();
+		job.getConfiguration().setInt("mapreduce.input.lineinputformat.linespermap", 4);
+        job.setJarByClass(HitMain.class);
+        
+        // Specify various job-specific parameters  
+        job.setMapperClass(HitCounter.class);
+        job.setReducerClass(HitReducer.class);
 
-    //System.out.println(inputDir);
-    //System.out.println(hdfsFile);
+        job.setInputFormatClass(NLineInputFormat.class);*/
+		
+		//********************* CombineTextInputFormat **********************
+		/*Configuration conf = new Configuration();
+        conf.set("mapred.textoutputformat.separator", ",");
+        conf.set("mapred.max.split.size", "16777216");
+        
+        Job job = new Job(conf);
+        job.getConfiguration().setLong("mapreduce.input.fileinputformat.split.maxsize", (long)(256*1024*1024));
 
-    try {
-        FileStatus[] inputFiles = local.listStatus(inputDir);
-        //System.out.println(inputFiles);
-        FSDataOutputStream out = hdfs.create(hdfsFile);
-        //System.out.println(out);
+        job.setJarByClass(HitMain.class);
+        job.setMapperClass(HitCounter.class);
+        job.setReducerClass(HitReducer.class);
+        
+        job.setInputFormatClass(CombinedMyFormat.class);
+        CombinedMyFormat.setMaxInputSplitSize(job, 16777216);*/
+        
+        // *************************************************
+        job.setOutputFormatClass(TextOutputFormat.class);
+        
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+        
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        
+        job.setJobName("myjob");
+        
+        System.exit(job.waitForCompletion(true) ? 0:1);
+	}
 
-        for (int i = 0; i < inputFiles.length; i++) {
-            System.out.println(inputFiles[i].getPath().getName());
-            FSDataInputStream in = local.open(inputFiles[i].getPath());
-            byte buffer[] = new byte[256];
-            int bytesRead = 0;
-            while ((bytesRead = in.read(buffer)) > 0) {
-                out.write(buffer, 0, bytesRead);
-            }
-            in.close();
-        }
-        out.close();
-    } catch (Exception e) {
-        //e.printStackTrace();
-
-    }
 }
+```
+
+**Code for Mapper**:
+```
+package com.info7250.hadoop.customInputFormat;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+
+import org.apache.hadoop.io.BytesWritable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+//public class HitCounter extends Mapper<Text,Text,Text,IntWritable>{ //- KeyValueTextInputFormat 
+//public class HitCounter extends Mapper<LongWritable,Text,Text,IntWritable>{ //- NLineInputFormat
+public class HitCounter extends Mapper<LongWritable,BytesWritable,Text,IntWritable>{ //- FixedLength
+		
+	private final static IntWritable one = new IntWritable(1);
+	private Text ipaddress = new Text();
+	
+	//public void map(Text key, Text value, org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException, InterruptedException { //- KeyValueTextInputFormat
+	//public void map(BytesWritable key, Text value, org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException, InterruptedException { //- NLineInputFormat
+	public void map(LongWritable key, BytesWritable value, org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException, InterruptedException { //- FixedInputFormat
+			
+			//String line=value.toString();
+			String line = new String(value.get(),StandardCharsets.UTF_8);
+			
+			String[] tokens=line.split(" ");
+			ipaddress.set(tokens[0]);
+			
+			context.write(ipaddress, one);
+			//context gives output key and value
+		}
+
 }
-
 ```
 
-Command:
-```
-mvn compile exec:java -Dexec.mainClass="com.info7250.mongodb.assignment.PutMerge" -Dexec.cleanupDaemonThreads=false
-```
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_putmerge.png?raw=true)
+Output for CombineFileInputFormat:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_4_combine.png?raw=true)
+
+Output for FixedLengthInputFormat:<br/>
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_4_fix.png?raw=true)
+
+
 
