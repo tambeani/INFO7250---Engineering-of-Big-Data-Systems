@@ -10,31 +10,105 @@ Output:<br/>
 Output:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_movefile.png?raw=true)
 
-3. Importing the dataset
+3. Run jar file without combiner
 
+Driver class:
 ```
-mongoimport --type csv --db nyse_a03_db --collection nyse_a03_coll --headerline ./NYSE_daily_prices_A.csv
+package com.info7250.hadoop.accesslogs_mr;
+
+import java.io.IOException;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+
+public class HitMain {
+	
+	public static void main(String args[]) throws IllegalArgumentException, IOException, ClassNotFoundException, InterruptedException {
+		
+		Job job = Job.getInstance();
+        job.setJarByClass(HitMain.class);
+        
+        // Specify various job-specific parameters  
+        job.setMapperClass(HitCounter.class);
+        job.setReducerClass(HitReducer.class);
+        
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
+        
+        
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+        
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        
+        job.setJobName("myjob");
+        
+        System.exit(job.waitForCompletion(true) ? 0 :1);
+	}
+
+}
+
 ```
 
 Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_importing_dataset.png?raw=true)
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_2_mr.png?raw=true)
 
-4. Check for created indexes
+4. Run jar with a combiner
 
+Driver class
 ```
-use nyse_a03_db
-db.nyse_a03_coll.getIndexes();
+package com.info7250.hadoop.accesslogs_mr;
+
+import java.io.IOException;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+
+public class HitMain {
+	
+	public static void main(String args[]) throws IllegalArgumentException, IOException, ClassNotFoundException, InterruptedException {
+		
+		Job job = Job.getInstance();
+        job.setJarByClass(HitMain.class);
+        
+        // Specify various job-specific parameters  
+        job.setMapperClass(HitCounter.class);
+        job.setCombinerClass(HitReducer.class);
+        job.setReducerClass(HitReducer.class);
+        
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
+        
+        
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(IntWritable.class);
+        
+        FileInputFormat.addInputPath(job, new Path(args[0]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        
+        job.setJobName("myjob");
+        
+        System.exit(job.waitForCompletion(true) ? 0 :1);
+	}
+
+}
 ```
 
 Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_created_indexes.png?raw=true)
-
-## PART 4 - MongoDB Indexing
-
-1. Importing the dataset in another database
-
-Output:<br/>
-![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a03_imported_data.png?raw=true)
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_2_cmb.png?raw=true)
 
 2. Creating an index on this database
 

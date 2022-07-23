@@ -20,6 +20,7 @@ public class HitMain {
         
         // Specify various job-specific parameters  
         job.setMapperClass(HitCounter.class);
+        job.setCombinerClass(HitReducer.class);
         job.setReducerClass(HitReducer.class);
         
         job.setInputFormatClass(TextInputFormat.class);
