@@ -9,6 +9,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.NLineInputFormat;
 //import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
@@ -22,6 +23,7 @@ public class HitMain {
 
 		Job job = new Job(conf);
 		
+		//
 		//Job job = Job.getInstance();
         job.setJarByClass(HitMain.class);
         
@@ -29,9 +31,13 @@ public class HitMain {
         job.setMapperClass(HitCounter.class);
         job.setReducerClass(HitReducer.class);
         
-        job.setInputFormatClass(KeyValueTextInputFormat.class);
-        job.setOutputFormatClass(TextOutputFormat.class);
+        //************************ KeyValueTextInputFormat *****************
+        //job.setInputFormatClass(KeyValueTextInputFormat.class);
+        //job.setOutputFormatClass(TextOutputFormat.class);
         
+        //************************ NLineInputFormat ************************
+        job.setInputFormatClass(NLineInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
         
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
