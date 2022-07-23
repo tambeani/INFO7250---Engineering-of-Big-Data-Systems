@@ -8,6 +8,7 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FixedLengthInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.NLineInputFormat;
 //import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
@@ -18,6 +19,20 @@ public class HitMain {
 	
 	public static void main(String args[]) throws IllegalArgumentException, IOException, ClassNotFoundException, InterruptedException {
 		
+        //************************ FixedLengthInputFormat *****************
+        
+		Configuration conf = new Configuration();
+		conf.set("mapreduce.input.keyvaluelinerecordreader.key.value.separator", " ");
+
+		Job job = new Job(conf);
+		//Job job = Job.getInstance();
+        job.setJarByClass(HitMain.class);
+        
+        // Specify various job-specific parameters  
+        job.setMapperClass(HitCounter.class);
+        job.setReducerClass(HitReducer.class);
+		
+		job.setInputFormatClass(FixedLengthInputFormat.class);
 		        
         //************************ KeyValueTextInputFormat *****************
         
@@ -32,8 +47,7 @@ public class HitMain {
         job.setMapperClass(HitCounter.class);
         job.setReducerClass(HitReducer.class);
 		
-		//job.setInputFormatClass(KeyValueTextInputFormat.class);
-        //job.setOutputFormatClass(TextOutputFormat.class);*/
+		//job.setInputFormatClass(KeyValueTextInputFormat.class);*/
         
         //************************ NLineInputFormat ************************
         
@@ -52,7 +66,7 @@ public class HitMain {
         job.setInputFormatClass(NLineInputFormat.class);*/
 		
 		//********************* CombineTextInputFormat **********************
-		Configuration conf = new Configuration();
+		/*Configuration conf = new Configuration();
         conf.set("mapred.textoutputformat.separator", ",");
         conf.set("mapred.max.split.size", "16777216");
         
@@ -64,7 +78,7 @@ public class HitMain {
         job.setReducerClass(HitReducer.class);
         
         job.setInputFormatClass(CombinedMyFormat.class);
-        CombinedMyFormat.setMaxInputSplitSize(job, 16777216);
+        CombinedMyFormat.setMaxInputSplitSize(job, 16777216);*/
         
         // *************************************************
         job.setOutputFormatClass(TextOutputFormat.class);
