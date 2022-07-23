@@ -12,7 +12,6 @@ Output:<br/>
 
 3. Run jar file without combiner
 
-Driver class:
 ```
 package com.info7250.hadoop.accesslogs_mr;
 
@@ -62,7 +61,6 @@ Output:<br/>
 
 4. Run jar with a combiner
 
-Driver class
 ```
 package com.info7250.hadoop.accesslogs_mr;
 
