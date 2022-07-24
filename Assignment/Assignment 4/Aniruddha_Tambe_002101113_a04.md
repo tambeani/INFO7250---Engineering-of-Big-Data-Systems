@@ -159,6 +159,13 @@ public class StockDriver {
 Output for CombineFileInputFormat:<br/>
 ![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_3_1.png?raw=true)
 
+## PART 3.2 – Redo 3.1
+
+Individual file elapsed time: 32 seconds
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_indivdual.png?raw=true)
+Merged file elapsed time : 25 seconds
+![alt text](https://github.com/tambeani/INFO7250---Engineering-of-Big-Data-Systems/blob/main/screenshots/a04_merge.png?raw=true)
+
 ## PART 4 – Programming Assignment
 
 #### CombineFileInputFormat, FixedLengthInputFormat, KeyValueTextInputFormat, NLineInputFormat & TextInputFormat
