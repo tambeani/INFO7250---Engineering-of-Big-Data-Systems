@@ -11,10 +11,6 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-import Part5.NYSEWritable;
-import Part5.Part5Mapper;
-import Part5.Part5Reducer;
-
 import org.apache.hadoop.io.Text;
 
 
@@ -42,13 +38,13 @@ public class DateStockDriver {
 
     System.exit(job.waitForCompletion(true) ? 0 : 1);*/
    //Mapper and Reducer for Part 5
-     job.setMapperClass(Part5Mapper.class);
-     job.setCombinerClass(Part5Reducer.class);
-     job.setReducerClass(Part5Reducer.class);
+     //job.setMapperClass(Part5Mapper.class);
+     //job.setCombinerClass(Part5Reducer.class);
+     //job.setReducerClass(Part5Reducer.class);
 
      //Output Types for Part 5
      job.setOutputKeyClass(Text.class);
-     job.setOutputValueClass(NYSEWritable.class);
+     //job.setOutputValueClass(NYSEWritable.class);
 
      job.setInputFormatClass(TextInputFormat.class);
      job.setOutputFormatClass(TextOutputFormat.class);
